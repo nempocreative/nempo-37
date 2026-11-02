@@ -1,87 +1,142 @@
-export type Entity = Record<string, unknown> & { id?: number | string };
+import { supabase } from '@/integrations/supabase/client';
+import type { Database } from '@/integrations/supabase/types';
 
-const TOKEN_KEY = 'nempo_garut_admin_token';
+export type Entity = Record<string, unknown> & { id?: number | string };
+type TableName = keyof Database['public']['Tables'];
+
 const USER_KEY = 'nempo_garut_admin_user';
-const API_ORIGIN = (import.meta.env.VITE_NEMPO_GARUT_API_URL as string | undefined)?.trim().replace(/\/+$/, '');
+let cachedToken = '';
 
 export class ApiError extends Error {
   constructor(message: string, readonly status?: number) { super(message); this.name = 'ApiError'; }
 }
 
-function validConfiguredOrigin() {
-  if (!API_ORIGIN) return false;
-  try {
-    const parsed = new URL(API_ORIGIN);
-    return (parsed.protocol === 'https:' || parsed.protocol === 'http:') && parsed.origin !== window.location.origin;
-  } catch { return false; }
-}
-export function apiOrigin() { return validConfiguredOrigin() ? API_ORIGIN as string : ''; }
-export function getStoredToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
-export function getStoredUser() { return localStorage.getItem(USER_KEY) || 'Petugas'; }
-export function clearSession() { localStorage.removeItem(TOKEN_KEY); localStorage.removeItem(USER_KEY); }
-export function saveSession(token: string, user: string) {
-  localStorage.setItem(TOKEN_KEY, token);
-  localStorage.setItem(USER_KEY, user);
+/** The CMS now talks directly to Lovable Cloud; always configured. */
+export function apiOrigin() { return 'cloud'; }
+export function getStoredToken() { return cachedToken; }
+export function getStoredUser() { return (typeof localStorage !== 'undefined' && localStorage.getItem(USER_KEY)) || 'Petugas'; }
+export function clearSession() {
+  cachedToken = '';
+  localStorage.removeItem(USER_KEY);
+  void supabase.auth.signOut();
 }
 
-function requireOrigin() {
-  if (!API_ORIGIN) throw new ApiError('API belum dikonfigurasi. Tambahkan VITE_NEMPO_GARUT_API_URL pada environment CMS Nempo Organizer Garut.');
-  if (!validConfiguredOrigin()) throw new ApiError('VITE_NEMPO_GARUT_API_URL harus berupa URL API absolut dan berbeda dari origin CMS ini. Same-origin API tidak digunakan.');
-  return API_ORIGIN;
-}
-async function decode<T>(response: Response): Promise<T> {
-  const text = await response.text();
-  let data: unknown = {};
-  if (text.trim()) {
-    try { data = JSON.parse(text); } catch { data = { message: text }; }
-  }
-  if (!response.ok) {
-    const message = typeof data === 'object' && data && 'error' in data ? String((data as { error: unknown }).error) :
-      typeof data === 'object' && data && 'message' in data ? String((data as { message: unknown }).message) : `Permintaan gagal (${response.status})`;
-    throw new ApiError(message, response.status);
-  }
-  return data as T;
-}
-export async function request<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
-  const base = requireOrigin();
-  try {
-    const response = await fetch(`${base}${path}`, {
-      method,
-      headers: {
-        ...(body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
-        ...(getStoredToken() ? { Authorization: `Bearer ${getStoredToken()}` } : {}),
-      },
-      body: body === undefined ? undefined : body instanceof FormData ? body : JSON.stringify(body),
-    });
-    return decode<T>(response);
-  } catch (error) {
-    if (error instanceof ApiError) throw error;
-    throw new ApiError(`API Nempo Organizer Garut tidak dapat dijangkau di ${base}. Periksa URL dan koneksi layanan.`);
-  }
-}
-export async function login(username: string, password: string) {
-  const result = await request<{ token: string; username?: string; user?: { username?: string; name?: string } }>('/api/admin/auth/login', 'POST', { username, password });
-  if (!result?.token) throw new ApiError('Respons login tidak memuat token yang valid.');
-  const user = result.username || result.user?.name || result.user?.username || username;
-  saveSession(result.token, user);
-  return result.token;
+/** Returns the session token only when the signed-in user is a verified admin (checked by the database). */
+export async function restoreAdminSession(): Promise<string | null> {
+  const { data } = await supabase.auth.getUser();
+  if (!data.user) return null;
+  const { data: role } = await supabase.from('user_roles').select('role').eq('user_id', data.user.id).eq('role', 'admin').maybeSingle();
+  if (!role) return null;
+  const { data: s } = await supabase.auth.getSession();
+  cachedToken = s.session?.access_token ?? '';
+  return cachedToken || null;
 }
 
-export const routeFor: Record<string, string> = {
-  wisata: 'wisata', kuliner: 'kuliner', cafe: 'cafe', penginapan: 'penginapan', events: 'events',
-  berita: 'berita', vouchers: 'vouchers', 'kamus-sunda': 'kamus-sunda', transportasi: 'transportasi',
-  'price-list': 'price-list', partnership: 'partnership', 'digital-services': 'digital-services',
-  banners: 'banners', 'promo-banners': 'promo-banners', partners: 'partners',
-  notifications: 'notifications', users: 'users', mitra: 'mitra', donations: 'donations',
-  influencers: 'influencers', 'influencer-banner-photos': 'influencer-banner-photos',
-  talent: 'talents', 'talent-portfolio': 'talent-portfolio', 'talent-banner': 'talent-banner',
+export async function login(email: string, password: string) {
+  const { error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+  if (error) throw new ApiError(error.message === 'Invalid login credentials' ? 'Email atau password salah.' : error.message);
+  const token = await restoreAdminSession();
+  if (!token) {
+    await supabase.auth.signOut();
+    throw new ApiError('Akun ini belum memiliki akses admin CMS.');
+  }
+  localStorage.setItem(USER_KEY, email.trim());
+  return token;
+}
+
+/** CMS module slug -> database table. Modules not listed here have no table yet. */
+export const tableFor: Record<string, TableName> = {
+  wisata: 'wisata', kuliner: 'kuliner', cafe: 'kuliner', penginapan: 'penginapan', events: 'events',
+  berita: 'berita', vouchers: 'vouchers', 'kamus-sunda': 'kamus_sunda', transportasi: 'transportasi',
+  'price-list': 'price_list', 'digital-services': 'digital_services', banners: 'banners',
+  'promo-banners': 'promo_banners', partners: 'partners', influencers: 'influencers', talent: 'talents',
 };
+export const supportedSlugs = new Set([...Object.keys(tableFor), 'settings', 'backup']);
+/** Kept for compatibility with older imports. */
+export const routeFor = tableFor;
+
+const columnCache = new Map<string, Set<string>>();
+async function columnsOf(table: TableName): Promise<Set<string> | null> {
+  if (columnCache.has(table)) return columnCache.get(table)!;
+  const { data } = await supabase.from(table).select('*').limit(1);
+  if (!data?.length) return null;
+  const set = new Set(Object.keys(data[0] as object));
+  columnCache.set(table, set);
+  return set;
+}
+async function clean(table: TableName, payload: unknown) {
+  const out: Record<string, unknown> = {};
+  const cols = await columnsOf(table);
+  for (const [k, v] of Object.entries((payload ?? {}) as Record<string, unknown>)) {
+    if (k === 'id' || k === 'created_at') continue;
+    if (cols && !cols.has(k)) continue;
+    out[k] = v === '' ? null : v;
+  }
+  if (!cols || cols.has('updated_at')) out.updated_at = new Date().toISOString();
+  return out;
+}
+function fail(error: { message: string } | null) {
+  if (!error) return;
+  if (/column .* does not exist|Could not find the '(.+)' column/.test(error.message)) {
+    const m = error.message.match(/'([^']+)' column/);
+    throw new ApiError(`Kolom ${m?.[1] ?? ''} tidak tersedia di database.`);
+  }
+  throw new ApiError(error.message);
+}
+function tableOrThrow(slug: string) {
+  const t = tableFor[slug];
+  if (!t) throw new ApiError('Modul ini belum terhubung ke database.');
+  return t;
+}
+
 export const resourceApi = {
-  list: (slug: string) => request<unknown>(`/api/admin/${routeFor[slug]}`),
-  create: (slug: string, payload: unknown) => request<unknown>(`/api/admin/${routeFor[slug]}`, 'POST', payload),
-  update: (slug: string, id: string | number, payload: unknown) => request<unknown>(`/api/admin/${routeFor[slug]}/${encodeURIComponent(String(id))}`, 'PUT', payload),
-  remove: (slug: string, id: string | number) => request<unknown>(`/api/admin/${routeFor[slug]}/${encodeURIComponent(String(id))}`, 'DELETE'),
+  list: async (slug: string) => {
+    const t = tableOrThrow(slug);
+    let q = supabase.from(t).select('*').order('id', { ascending: false });
+    if (slug === 'cafe') q = q.ilike('category' as never, '%cafe%');
+    const { data, error } = await q; fail(error); return data ?? [];
+  },
+  create: async (slug: string, payload: unknown) => {
+    const t = tableOrThrow(slug);
+    const row = await clean(t, payload);
+    if (slug === 'cafe' && !row.category) row.category = 'Cafe';
+    const { error } = await supabase.from(t).insert(row as never); fail(error); return {};
+  },
+  update: async (slug: string, id: string | number, payload: unknown) => {
+    const t = tableOrThrow(slug);
+    const { error } = await supabase.from(t).update((await clean(t, payload)) as never).eq('id' as never, id as never); fail(error); return {};
+  },
+  remove: async (slug: string, id: string | number) => {
+    const t = tableOrThrow(slug);
+    const { error } = await supabase.from(t).delete().eq('id' as never, id as never); fail(error); return {};
+  },
 };
+
+/** Legacy path-style requests used by CMS pages, mapped onto the database. */
+export async function request<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
+  if (path === '/api/admin/stats') {
+    const tables: TableName[] = ['wisata', 'kuliner', 'penginapan', 'events', 'berita', 'banners'];
+    const counts = await Promise.all(tables.map(async t => {
+      const { count } = await supabase.from(t).select('*', { count: 'exact', head: true });
+      return [t, count ?? 0] as const;
+    }));
+    return Object.fromEntries(counts) as T;
+  }
+  if (path === '/api/admin/settings') {
+    if (method === 'GET') {
+      const { data, error } = await supabase.from('site_settings').select('*').order('key'); fail(error);
+      return (data ?? []).map(r => ({ ...r, id: r.key })) as T;
+    }
+    const p = (body ?? {}) as Record<string, unknown>;
+    const key = String(p.key ?? p.id ?? '').trim();
+    if (!key) throw new ApiError('Kunci pengaturan wajib diisi.');
+    const { error } = await supabase.from('site_settings').upsert({ key, value: p.value == null ? null : String(p.value), updated_at: new Date().toISOString() });
+    fail(error); return {} as T;
+  }
+  if (path === '/api/admin/upload') throw new ApiError('Unggah file belum tersedia. Tempel URL gambar langsung pada kolom gambar.');
+  throw new ApiError('Fitur ini belum terhubung ke database.');
+}
+
 export function asRows(value: unknown): Entity[] {
   if (Array.isArray(value)) return value.filter((row): row is Entity => !!row && typeof row === 'object');
   if (value && typeof value === 'object') {
