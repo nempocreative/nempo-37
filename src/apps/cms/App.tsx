@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Route, Switch, useLocation, Router as WouterRouter } from '@/lib/wouter';
 import { ErrorBoundary } from '@/apps/cms/components/error-boundary';
@@ -6,7 +6,7 @@ import { Toaster } from '@/apps/cms/components/ui/toaster';
 import { TooltipProvider } from '@/apps/cms/components/ui/tooltip';
 import { Sidebar } from '@/apps/cms/components/Sidebar';
 import { ModulePage } from '@/apps/cms/components/ModulePage';
-import { clearSession, getStoredToken } from '@/apps/cms/lib/api';
+import { clearSession, restoreAdminSession } from '@/apps/cms/lib/api';
 import { modules } from '@/apps/cms/lib/modules';
 import Dashboard from '@/apps/cms/pages/Dashboard';
 import LoginPage from '@/apps/cms/pages/Login';
@@ -37,10 +37,12 @@ function Workspace({onLogout}:{onLogout:()=>void}){
   </div>;
 }
 function App(){
-  const [token,setToken]=useState<string|null>(()=>getStoredToken()||null);
+  const [token,setToken]=useState<string|null>(null);
+  const [ready,setReady]=useState(false);
+  useEffect(()=>{restoreAdminSession().then(t=>{setToken(t);setReady(true);}).catch(()=>setReady(true));},[]);
   function logout(){clearSession();setToken(null);}
   return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={"/cms/".replace(/\/$/,'')}>
-    {token?<Workspace onLogout={logout}/>:<LoginPage onLogin={setToken}/>}
+    {!ready?<div className="grid min-h-[100dvh] place-items-center text-sm text-[#8b7d6c]">Memuat…</div>:token?<Workspace onLogout={logout}/>:<LoginPage onLogin={setToken}/>}
   </WouterRouter><Toaster/></TooltipProvider></QueryClientProvider>;
 }
 export default App;

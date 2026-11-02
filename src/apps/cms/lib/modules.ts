@@ -34,7 +34,7 @@ export const modules: Record<string, ModuleSpec> = {
   'ticket-scanner':{title:'Scan Tiket Masuk',description:'Validasi kode tiket pada layanan tiket Garut.',readonly:true},
   'user-rewards':{title:'Poin & Reward',description:'Pantau reward pengguna.',endpoint:'/api/admin/user-rewards',readonly:true},
   reviews:{title:'Ulasan & Rating',description:'Pantau masukan publik pada listing.',endpoint:'/api/admin/reviews',readonly:true},
-  'settings':{title:'Pengaturan',description:'Pengaturan CMS Nempo Organizer Garut.',endpoint:'/api/admin/settings'},
+  'settings':{title:'Pengaturan',description:'Pengaturan CMS Nempo Organizer Garut.',fields:fields({key:'key',label:'Kunci',required:true},{key:'value',label:'Nilai',type:'textarea'})},
   'backup':{title:'Backup Data',description:'Ekspor atau pulihkan data layanan CMS.',readonly:true},
 };
 const titles: Record<string,string> = {
@@ -44,10 +44,14 @@ const titles: Record<string,string> = {
   'influencer-banner-photos':'Foto Banner Influencer',
 };
 for (const [slug,title] of Object.entries(titles)) modules[slug] = { title, description:`Kelola data ${title.toLocaleLowerCase('id-ID')} pada layanan Garut.` };
-export const navGroups = [
+import { supportedSlugs } from '@/apps/cms/lib/api';
+const allNavGroups = [
   {label:'NEMPO ORGANIZER',items:[['Dashboard','/'],['Banner Beranda','/banners'],['Banner Promo','/promo-banners'],['Mitra Kami','/partners'],['Wisata','/wisata'],['Kuliner','/kuliner'],['Cafe','/cafe'],['Penginapan','/penginapan'],['Event','/events'],['Pesanan Tiket','/event-orders'],['Scan Tiket','/ticket-scanner'],['Berita & Artikel','/berita'],['Influencer','/influencers'],['Foto Banner Influencer','/influencer-banner-photos'],['Talent Studio','/talent'],['Karya Talent','/talent-portfolio'],['Banner Talent','/talent-banner'],['Kerja Sama','/partnership']]},
   {label:'OPERASIONAL',items:[['Pesanan & Menu','/jajan-yuk']]},
   {label:'FITUR GARUT',items:[['Voucher & Kupon','/vouchers'],['Kamus Sunda','/kamus-sunda'],['Transportasi','/transportasi'],['Daftar Harga','/price-list'],['Layanan Digital','/digital-services'],['Donasi Bibit','/donations']]},
   {label:'MANAJEMEN',items:[['Daftar User','/users'],['Akun Mitra','/mitra'],['Poin & Reward','/user-rewards'],['Ulasan & Rating','/reviews']]},
   {label:'SISTEM',items:[['Notifikasi','/notifications'],['Backup Data','/backup'],['Pengaturan','/settings']]},
 ];
+
+export const navGroups = allNavGroups.map(g=>({...g,items:g.items.filter(([,href])=>href==='/'||supportedSlugs.has(href.slice(1)))})).filter(g=>g.items.length);
+for (const slug of Object.keys(modules)) if (!supportedSlugs.has(slug)) delete modules[slug];
