@@ -107,6 +107,7 @@ export const resourceApi = {
     const { error } = await supabase.from(t).update((await clean(t, payload)) as never).eq('id' as never, id as never); fail(error); return {};
   },
   remove: async (slug: string, id: string | number) => {
+    if (slug === 'settings') { const { error } = await supabase.from('site_settings').delete().eq('key', String(id)); fail(error); return {}; }
     const t = tableOrThrow(slug);
     const { error } = await supabase.from(t).delete().eq('id' as never, id as never); fail(error); return {};
   },
