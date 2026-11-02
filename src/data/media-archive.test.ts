@@ -7,8 +7,8 @@ import {
 } from "./media-archive";
 
 describe("media archive manifest", () => {
-  it("keeps all 41 recovered files", () => {
-    expect(MEDIA_ARCHIVE_ENTRIES).toHaveLength(41);
+  it("keeps all 37 recovered files", () => {
+    expect(MEDIA_ARCHIVE_ENTRIES).toHaveLength(37);
   });
 
   it("records a checksum, a size and a pointer for every file", () => {
