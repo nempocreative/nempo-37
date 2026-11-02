@@ -30,7 +30,7 @@ describe("event seed data", () => {
 
   it("points at the stored poster image", () => {
     expect(event?.image).toBe(
-      "/__l5e/assets-v1/bb79b274-64f6-4971-92c3-1de407437e8b/musicomedy-night-poster.webp",
+      "/images/events/musicomedy-night-poster.webp",
     );
   });
 
