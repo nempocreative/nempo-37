@@ -26,7 +26,8 @@ export const BACKUP_TABLES = [
   "wisata",
 ] as const satisfies readonly TableName[];
 
-type MissingTables = Exclude<TableName, (typeof BACKUP_TABLES)[number]>;
+// user_roles holds admin access grants and is deliberately never exported.
+type MissingTables = Exclude<TableName, (typeof BACKUP_TABLES)[number] | "user_roles">;
 // Compile-time guard: errors when a database table is missing from BACKUP_TABLES.
 const _allTablesCovered: [MissingTables] extends [never] ? true : MissingTables = true;
 void _allTablesCovered;
