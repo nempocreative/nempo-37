@@ -7,7 +7,7 @@ import { Nempo01Guestbook } from "./nempo-01-guestbook";
 import couplePhoto from "@/assets/nempo-01-ai-couple.jpg";
 import walkPhoto from "@/assets/nempo-01-ai-walk.jpg";
 import detailPhoto from "@/assets/nempo-01-ai-detail.jpg";
-import musicAsset from "@/assets/nempo-01-beautiful-in-white.mp3.asset.json";
+import musicAsset from "@/assets/nempo-01-beautiful-in-white.mp3";
 import { Nempo01Gifts } from "./nempo-01-gifts";
 import "./nempo-01-invitation.css";
 
@@ -54,7 +54,7 @@ export function Nempo01Invitation() {
   const consult = `${NEMPO_WA_URL}?text=${encodeURIComponent("Halo Nempo, saya tertarik undangan NEMPO 01 — Biru Bunga (Spesial Foto).")}`;
   const calendar = "data:text/calendar;charset=utf-8," + encodeURIComponent("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:nempo01-demo@nempo\r\nDTSTAMP:20261031T000000Z\r\nDTSTART:20261220T010000Z\r\nDTEND:20261220T070000Z\r\nSUMMARY:Pernikahan Habib dan Adiba (Contoh)\r\nLOCATION:Garut - lokasi contoh\r\nEND:VEVENT\r\nEND:VCALENDAR");
   return <div className="nempo-one relative min-h-screen overflow-x-hidden">
-    <audio ref={audioRef} src={musicAsset.url} loop preload="none" onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)}/>
+    <audio ref={audioRef} src={musicAsset} loop preload="none" onPlay={()=>setPlaying(true)} onPause={()=>setPlaying(false)}/>
     {opened && <Button variant="outline" size="icon" onClick={toggleMusic} aria-label={playing ? "Matikan musik" : "Putar musik"} title={playing ? "Matikan musik" : "Putar musik"} className="n01-nav fixed right-4 bottom-24 z-40 rounded-full">{playing ? <Volume2/> : <VolumeX/>}</Button>}
     <div className="n01-petals" aria-hidden="true">{Array.from({length:8},(_,index)=><span key={index} className={`n01-petal n01-petal-${index}`}><Flower2 strokeWidth={1}/></span>)}</div>
     <section className={`n01-enter relative flex flex-col items-center justify-end overflow-hidden px-6 pb-12 pt-16 text-center ${opened ? "min-h-[85svh] max-h-[800px]" : "min-h-svh"}`}>

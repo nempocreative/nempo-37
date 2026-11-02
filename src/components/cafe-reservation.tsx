@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Armchair, ArrowUpRight, Check, ChevronDown, Clock, Map, MessageCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import denahAsset from "@/assets/denah-good-story-cafe.jpg.asset.json";
+import denahAsset from "@/assets/denah-good-story-cafe.jpg";
 import { CAFE_ZONES, EVENT_RESERVATION_WA_NUMBER, cafeBestSpotTables, cafeJamRange, cafeReservationUrl, cafeZoneOf } from "@/data/cafe-layout";
 
 interface Props {
@@ -43,10 +43,10 @@ export function CafeReservation({ eventName, eventDate, timeStart, timeEnd, loca
             <Button variant="ghost" size="icon" aria-label={showDenah ? "Tutup denah meja" : "Lihat denah meja"} aria-expanded={showDenah} onClick={() => setShowDenah(!showDenah)}><ChevronDown className={showDenah ? "rotate-180" : ""} /></Button>
           </div>
           {showDenah && <>
-            <a href={denahAsset.url} target="_blank" rel="noopener noreferrer" className="block rounded-lg border border-border bg-muted p-2" aria-label="Buka denah ukuran penuh">
-              <img src={denahAsset.url} alt="Denah nomor meja Good Story Cafe" width={1400} height={1833} className="w-full h-auto max-h-[420px] object-contain" loading="lazy" />
+            <a href={denahAsset} target="_blank" rel="noopener noreferrer" className="block rounded-lg border border-border bg-muted p-2" aria-label="Buka denah ukuran penuh">
+              <img src={denahAsset} alt="Denah nomor meja Good Story Cafe" width={1400} height={1833} className="w-full h-auto max-h-[420px] object-contain" loading="lazy" />
             </a>
-            <Button variant="link" asChild className="px-0 text-xs"><a href={denahAsset.url} target="_blank" rel="noopener noreferrer">Lihat denah lengkap<ArrowUpRight /></a></Button>
+            <Button variant="link" asChild className="px-0 text-xs"><a href={denahAsset} target="_blank" rel="noopener noreferrer">Lihat denah lengkap<ArrowUpRight /></a></Button>
           </>}
         </div>
 
