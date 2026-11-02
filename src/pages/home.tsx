@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { SEO } from "@/components/seo";
-import musicomedyPoster from "@/assets/musicomedy-night-poster.webp.asset.json";
+import musicomedyPoster from "@/assets/musicomedy-night-poster.webp";
 import { Layout } from "@/components/layout";
 import { PlacePhoto } from "@/components/place-photo";
 import { Search, MapPin, MapPinned, Route, TrainFront, ChevronRight, ArrowRight, Flame, ThumbsUp, Info, Map, CalendarDays, Users, Building2, Ticket, Leaf, Award, Gift, TreePine, Heart, Mountain, Compass, Droplets, Wind, Eye, Thermometer, Newspaper, Clock, Radio, UtensilsCrossed, UserPlus, Star, Shield, Crown, Coffee, Music, Tv, Mic, BookOpen, Instagram } from "lucide-react";
@@ -1889,7 +1889,7 @@ export default function Home() {
             <div className="flex flex-col sm:h-[360px] sm:flex-row">
               <div className="relative aspect-[3/4] w-full shrink-0 overflow-hidden sm:h-full sm:w-auto">
                 <img
-                  src={musicomedyPoster.url}
+                  src={musicomedyPoster}
                   alt="Poster MusiComedy Night"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   loading="lazy"

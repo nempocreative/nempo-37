@@ -8,7 +8,7 @@ import { Nempo01Guestbook } from "./nempo-01-guestbook";
 import { Nempo01Gifts } from "./nempo-01-gifts";
 import coverPhoto from "@/assets/nempo-03-wedding-cover.jpg";
 import storyPhoto from "@/assets/nempo-03-wedding-story.jpg";
-import musicAsset from "@/assets/nempo-01-beautiful-in-white.mp3.asset.json";
+import musicAsset from "@/assets/nempo-01-beautiful-in-white.mp3";
 import "./nempo-01-invitation.css";
 import "./nempo-03-invitation.css";
 
@@ -54,7 +54,7 @@ export function Nempo03Invitation() {
   const calendar = "data:text/calendar;charset=utf-8," + encodeURIComponent("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:nempo03-demo@nempo\r\nDTSTAMP:20261031T000000Z\r\nDTSTART:20261220T010000Z\r\nDTEND:20261220T070000Z\r\nSUMMARY:Pernikahan Habib dan Adiba (Contoh)\r\nLOCATION:Garut - lokasi contoh\r\nEND:VEVENT\r\nEND:VCALENDAR");
 
   return <div className="nempo-one nempo-three min-h-screen overflow-x-hidden">
-    <audio ref={audioRef} src={musicAsset.url} loop preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>
+    <audio ref={audioRef} src={musicAsset} loop preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>
     <section className="n03-cover" id="sampul">
       <img className="n03-cover-photo" src={coverPhoto} alt="Contoh foto pasangan pengantin di taman klasik" width={1024} height={1536}/>
       <Link href="/wedding-invitation#tema" className="n03-back"><ArrowLeft className="size-4"/> Pilihan tema</Link>

@@ -5,7 +5,7 @@ import { Link } from "@/lib/wouter";
 import { NEMPO_WA_URL } from "@/lib/contact";
 import { Nempo01Guestbook } from "./nempo-01-guestbook";
 import { Nempo01Gifts } from "./nempo-01-gifts";
-import musicAsset from "@/assets/nempo-01-beautiful-in-white.mp3.asset.json";
+import musicAsset from "@/assets/nempo-01-beautiful-in-white.mp3";
 import coupleIllustration from "@/assets/nempo-02-couple-illustration.png";
 import "./nempo-01-invitation.css";
 import "./nempo-02-invitation.css";
@@ -77,7 +77,7 @@ export function Nempo02Invitation() {
   const calendar = "data:text/calendar;charset=utf-8," + encodeURIComponent("BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nUID:nempo02-demo@nempo\r\nDTSTAMP:20261031T000000Z\r\nDTSTART:20261220T010000Z\r\nDTEND:20261220T070000Z\r\nSUMMARY:Pernikahan Habib dan Adiba (Contoh)\r\nLOCATION:Garut - lokasi contoh\r\nEND:VEVENT\r\nEND:VCALENDAR");
 
   return <div className="nempo-one nempo-two relative min-h-screen overflow-x-hidden">
-    <audio ref={audioRef} src={musicAsset.url} loop preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>
+    <audio ref={audioRef} src={musicAsset} loop preload="none" onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)}/>
     <div className="n01-petals" aria-hidden="true">{Array.from({ length: 8 }, (_, i) => <span key={i} className={`n01-petal n01-petal-${i}`}><Flower2 strokeWidth={1}/></span>)}</div>
 
     {stage !== "open" ? <section className={`n02-cover relative flex min-h-svh items-center justify-center overflow-hidden px-6 py-16 text-center ${stage === "opening" ? "n02-opening" : "n01-enter"}`}>

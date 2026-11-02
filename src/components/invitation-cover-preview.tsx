@@ -1,23 +1,23 @@
-import cover01 from "@/assets/invitation-covers/nempo-01.jpg.asset.json";
-import cover02 from "@/assets/invitation-covers/nempo-02.jpg.asset.json";
-import cover03 from "@/assets/invitation-covers/nempo-03.jpg.asset.json";
-import cover04 from "@/assets/invitation-covers/nempo-04.jpg.asset.json";
-import cover05 from "@/assets/invitation-covers/nempo-05.jpg.asset.json";
-import cover06 from "@/assets/invitation-covers/nempo-06.jpg.asset.json";
-import cover07 from "@/assets/invitation-covers/nempo-07.jpg.asset.json";
-import cover08 from "@/assets/invitation-covers/nempo-08.jpg.asset.json";
-import cover09 from "@/assets/invitation-covers/nempo-09.jpg.asset.json";
-import cover10 from "@/assets/invitation-covers/nempo-10.jpg.asset.json";
-import cover11 from "@/assets/invitation-covers/nempo-11.jpg.asset.json";
-import cover12 from "@/assets/invitation-covers/nempo-12.jpg.asset.json";
-import cover13 from "@/assets/invitation-covers/nempo-13.jpg.asset.json";
-import cover14 from "@/assets/invitation-covers/nempo-14.jpg.asset.json";
-import cover15 from "@/assets/invitation-covers/nempo-15.jpg.asset.json";
-import cover16 from "@/assets/invitation-covers/nempo-16.jpg.asset.json";
+import cover01 from "@/assets/invitation-covers/nempo-01.jpg";
+import cover02 from "@/assets/invitation-covers/nempo-02.jpg";
+import cover03 from "@/assets/invitation-covers/nempo-03.jpg";
+import cover04 from "@/assets/invitation-covers/nempo-04.jpg";
+import cover05 from "@/assets/invitation-covers/nempo-05.jpg";
+import cover06 from "@/assets/invitation-covers/nempo-06.jpg";
+import cover07 from "@/assets/invitation-covers/nempo-07.jpg";
+import cover08 from "@/assets/invitation-covers/nempo-08.jpg";
+import cover09 from "@/assets/invitation-covers/nempo-09.jpg";
+import cover10 from "@/assets/invitation-covers/nempo-10.jpg";
+import cover11 from "@/assets/invitation-covers/nempo-11.jpg";
+import cover12 from "@/assets/invitation-covers/nempo-12.jpg";
+import cover13 from "@/assets/invitation-covers/nempo-13.jpg";
+import cover14 from "@/assets/invitation-covers/nempo-14.jpg";
+import cover15 from "@/assets/invitation-covers/nempo-15.jpg";
+import cover16 from "@/assets/invitation-covers/nempo-16.jpg";
 import type { InvitationTheme } from "@/data/invitation-themes";
 
 // Captures of the actual closed invitations at 390 × 780, not generic mockups.
-const covers: Record<string, { url: string }> = {
+const covers: Record<string, string> = {
   "NEMPO 01": cover01, "NEMPO 02": cover02,
   "NEMPO 03": cover03, "NEMPO 04": cover04,
   "NEMPO 05": cover05, "NEMPO 06": cover06,
@@ -34,7 +34,7 @@ export function InvitationCoverPreview({ theme }: { theme: InvitationTheme }) {
   return (
     <div className="relative aspect-[1/2] w-full overflow-hidden border-b border-border bg-muted">
       <img
-        src={cover.url}
+        src={cover}
         alt={`Sampul undangan ${theme.code} — ${theme.name}`}
         width={390}
         height={780}
