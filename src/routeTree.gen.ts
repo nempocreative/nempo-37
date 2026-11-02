@@ -19,18 +19,10 @@ import { Route as TalentRouteImport } from './routes/talent'
 import { Route as WebDevelopmentRouteImport } from './routes/web-development'
 import { Route as WeddingInvitationRouteImport } from './routes/wedding-invitation'
 import { Route as WeddingOrganizerRouteImport } from './routes/wedding-organizer'
-import { Route as AdminPanelIndexRouteImport } from './routes/admin-panel.index'
-import { Route as AdminPanelSplatRouteImport } from './routes/admin-panel.$'
 import { Route as ApiSplatRouteImport } from './routes/api/$'
 import { Route as ApiBackupRouteImport } from './routes/api/backup'
 import { Route as CmsIndexRouteImport } from './routes/cms.index'
 import { Route as CmsSplatRouteImport } from './routes/cms.$'
-import { Route as NempoFeedIndexRouteImport } from './routes/nempo-feed.index'
-import { Route as NempoFeedSplatRouteImport } from './routes/nempo-feed.$'
-import { Route as NempoMouIndexRouteImport } from './routes/nempo-mou.index'
-import { Route as NempoMouSplatRouteImport } from './routes/nempo-mou.$'
-import { Route as TionFeedIndexRouteImport } from './routes/tion-feed.index'
-import { Route as TionFeedSplatRouteImport } from './routes/tion-feed.$'
 import { Route as WeddingInvitationTemaBiruTamanRouteImport } from './routes/wedding-invitation.tema.biru-taman'
 import { Route as WeddingInvitationTemaBiruTamanTanpaFotoRouteImport } from './routes/wedding-invitation.tema.biru-taman-tanpa-foto'
 import { Route as WeddingInvitationTemaHitamMewahRouteImport } from './routes/wedding-invitation.tema.hitam-mewah'
@@ -95,16 +87,6 @@ const WeddingOrganizerRoute = WeddingOrganizerRouteImport.update({
   path: '/wedding-organizer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminPanelIndexRoute = AdminPanelIndexRouteImport.update({
-  id: '/admin-panel/',
-  path: '/admin-panel/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminPanelSplatRoute = AdminPanelSplatRouteImport.update({
-  id: '/admin-panel/$',
-  path: '/admin-panel/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiSplatRoute = ApiSplatRouteImport.update({
   id: '/api/$',
   path: '/api/$',
@@ -123,36 +105,6 @@ const CmsIndexRoute = CmsIndexRouteImport.update({
 const CmsSplatRoute = CmsSplatRouteImport.update({
   id: '/cms/$',
   path: '/cms/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NempoFeedIndexRoute = NempoFeedIndexRouteImport.update({
-  id: '/nempo-feed/',
-  path: '/nempo-feed/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NempoFeedSplatRoute = NempoFeedSplatRouteImport.update({
-  id: '/nempo-feed/$',
-  path: '/nempo-feed/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NempoMouIndexRoute = NempoMouIndexRouteImport.update({
-  id: '/nempo-mou/',
-  path: '/nempo-mou/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NempoMouSplatRoute = NempoMouSplatRouteImport.update({
-  id: '/nempo-mou/$',
-  path: '/nempo-mou/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TionFeedIndexRoute = TionFeedIndexRouteImport.update({
-  id: '/tion-feed/',
-  path: '/tion-feed/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TionFeedSplatRoute = TionFeedSplatRouteImport.update({
-  id: '/tion-feed/$',
-  path: '/tion-feed/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeddingInvitationTemaBiruTamanRoute =
@@ -245,18 +197,10 @@ export interface FileRoutesByFullPath {
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRouteWithChildren
   '/wedding-organizer': typeof WeddingOrganizerRoute
-  '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
   '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
-  '/nempo-feed/$': typeof NempoFeedSplatRoute
-  '/nempo-mou/$': typeof NempoMouSplatRoute
-  '/tion-feed/$': typeof TionFeedSplatRoute
-  '/admin-panel/': typeof AdminPanelIndexRoute
   '/cms/': typeof CmsIndexRoute
-  '/nempo-feed/': typeof NempoFeedIndexRoute
-  '/nempo-mou/': typeof NempoMouIndexRoute
-  '/tion-feed/': typeof TionFeedIndexRoute
   '/wedding-invitation/tema/biru-taman': typeof WeddingInvitationTemaBiruTamanRoute
   '/wedding-invitation/tema/biru-taman-tanpa-foto': typeof WeddingInvitationTemaBiruTamanTanpaFotoRoute
   '/wedding-invitation/tema/hitam-mewah': typeof WeddingInvitationTemaHitamMewahRoute
@@ -282,18 +226,10 @@ export interface FileRoutesByTo {
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRouteWithChildren
   '/wedding-organizer': typeof WeddingOrganizerRoute
-  '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
   '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
-  '/nempo-feed/$': typeof NempoFeedSplatRoute
-  '/nempo-mou/$': typeof NempoMouSplatRoute
-  '/tion-feed/$': typeof TionFeedSplatRoute
-  '/admin-panel': typeof AdminPanelIndexRoute
   '/cms': typeof CmsIndexRoute
-  '/nempo-feed': typeof NempoFeedIndexRoute
-  '/nempo-mou': typeof NempoMouIndexRoute
-  '/tion-feed': typeof TionFeedIndexRoute
   '/wedding-invitation/tema/biru-taman': typeof WeddingInvitationTemaBiruTamanRoute
   '/wedding-invitation/tema/biru-taman-tanpa-foto': typeof WeddingInvitationTemaBiruTamanTanpaFotoRoute
   '/wedding-invitation/tema/hitam-mewah': typeof WeddingInvitationTemaHitamMewahRoute
@@ -320,18 +256,10 @@ export interface FileRoutesById {
   '/web-development': typeof WebDevelopmentRoute
   '/wedding-invitation': typeof WeddingInvitationRouteWithChildren
   '/wedding-organizer': typeof WeddingOrganizerRoute
-  '/admin-panel/$': typeof AdminPanelSplatRoute
   '/api/$': typeof ApiSplatRoute
   '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
-  '/nempo-feed/$': typeof NempoFeedSplatRoute
-  '/nempo-mou/$': typeof NempoMouSplatRoute
-  '/tion-feed/$': typeof TionFeedSplatRoute
-  '/admin-panel/': typeof AdminPanelIndexRoute
   '/cms/': typeof CmsIndexRoute
-  '/nempo-feed/': typeof NempoFeedIndexRoute
-  '/nempo-mou/': typeof NempoMouIndexRoute
-  '/tion-feed/': typeof TionFeedIndexRoute
   '/wedding-invitation/tema/biru-taman': typeof WeddingInvitationTemaBiruTamanRoute
   '/wedding-invitation/tema/biru-taman-tanpa-foto': typeof WeddingInvitationTemaBiruTamanTanpaFotoRoute
   '/wedding-invitation/tema/hitam-mewah': typeof WeddingInvitationTemaHitamMewahRoute
@@ -359,18 +287,10 @@ export interface FileRouteTypes {
     | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
-    | '/admin-panel/$'
     | '/api/$'
     | '/api/backup'
     | '/cms/$'
-    | '/nempo-feed/$'
-    | '/nempo-mou/$'
-    | '/tion-feed/$'
-    | '/admin-panel/'
     | '/cms/'
-    | '/nempo-feed/'
-    | '/nempo-mou/'
-    | '/tion-feed/'
     | '/wedding-invitation/tema/biru-taman'
     | '/wedding-invitation/tema/biru-taman-tanpa-foto'
     | '/wedding-invitation/tema/hitam-mewah'
@@ -396,18 +316,10 @@ export interface FileRouteTypes {
     | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
-    | '/admin-panel/$'
     | '/api/$'
     | '/api/backup'
     | '/cms/$'
-    | '/nempo-feed/$'
-    | '/nempo-mou/$'
-    | '/tion-feed/$'
-    | '/admin-panel'
     | '/cms'
-    | '/nempo-feed'
-    | '/nempo-mou'
-    | '/tion-feed'
     | '/wedding-invitation/tema/biru-taman'
     | '/wedding-invitation/tema/biru-taman-tanpa-foto'
     | '/wedding-invitation/tema/hitam-mewah'
@@ -433,18 +345,10 @@ export interface FileRouteTypes {
     | '/web-development'
     | '/wedding-invitation'
     | '/wedding-organizer'
-    | '/admin-panel/$'
     | '/api/$'
     | '/api/backup'
     | '/cms/$'
-    | '/nempo-feed/$'
-    | '/nempo-mou/$'
-    | '/tion-feed/$'
-    | '/admin-panel/'
     | '/cms/'
-    | '/nempo-feed/'
-    | '/nempo-mou/'
-    | '/tion-feed/'
     | '/wedding-invitation/tema/biru-taman'
     | '/wedding-invitation/tema/biru-taman-tanpa-foto'
     | '/wedding-invitation/tema/hitam-mewah'
@@ -471,18 +375,10 @@ export interface RootRouteChildren {
   WebDevelopmentRoute: typeof WebDevelopmentRoute
   WeddingInvitationRoute: typeof WeddingInvitationRouteWithChildren
   WeddingOrganizerRoute: typeof WeddingOrganizerRoute
-  AdminPanelSplatRoute: typeof AdminPanelSplatRoute
   ApiSplatRoute: typeof ApiSplatRoute
   ApiBackupRoute: typeof ApiBackupRoute
   CmsSplatRoute: typeof CmsSplatRoute
-  NempoFeedSplatRoute: typeof NempoFeedSplatRoute
-  NempoMouSplatRoute: typeof NempoMouSplatRoute
-  TionFeedSplatRoute: typeof TionFeedSplatRoute
-  AdminPanelIndexRoute: typeof AdminPanelIndexRoute
   CmsIndexRoute: typeof CmsIndexRoute
-  NempoFeedIndexRoute: typeof NempoFeedIndexRoute
-  NempoMouIndexRoute: typeof NempoMouIndexRoute
-  TionFeedIndexRoute: typeof TionFeedIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -557,20 +453,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WeddingOrganizerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin-panel/': {
-      id: '/admin-panel/'
-      path: '/admin-panel'
-      fullPath: '/admin-panel/'
-      preLoaderRoute: typeof AdminPanelIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin-panel/$': {
-      id: '/admin-panel/$'
-      path: '/admin-panel/$'
-      fullPath: '/admin-panel/$'
-      preLoaderRoute: typeof AdminPanelSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/$': {
       id: '/api/$'
       path: '/api/$'
@@ -597,48 +479,6 @@ declare module '@tanstack/react-router' {
       path: '/cms/$'
       fullPath: '/cms/$'
       preLoaderRoute: typeof CmsSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nempo-feed/': {
-      id: '/nempo-feed/'
-      path: '/nempo-feed'
-      fullPath: '/nempo-feed/'
-      preLoaderRoute: typeof NempoFeedIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nempo-feed/$': {
-      id: '/nempo-feed/$'
-      path: '/nempo-feed/$'
-      fullPath: '/nempo-feed/$'
-      preLoaderRoute: typeof NempoFeedSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nempo-mou/': {
-      id: '/nempo-mou/'
-      path: '/nempo-mou'
-      fullPath: '/nempo-mou/'
-      preLoaderRoute: typeof NempoMouIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/nempo-mou/$': {
-      id: '/nempo-mou/$'
-      path: '/nempo-mou/$'
-      fullPath: '/nempo-mou/$'
-      preLoaderRoute: typeof NempoMouSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tion-feed/': {
-      id: '/tion-feed/'
-      path: '/tion-feed'
-      fullPath: '/tion-feed/'
-      preLoaderRoute: typeof TionFeedIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tion-feed/$': {
-      id: '/tion-feed/$'
-      path: '/tion-feed/$'
-      fullPath: '/tion-feed/$'
-      preLoaderRoute: typeof TionFeedSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wedding-invitation/tema/biru-taman': {
@@ -788,18 +628,10 @@ const rootRouteChildren: RootRouteChildren = {
   WebDevelopmentRoute: WebDevelopmentRoute,
   WeddingInvitationRoute: WeddingInvitationRouteWithChildren,
   WeddingOrganizerRoute: WeddingOrganizerRoute,
-  AdminPanelSplatRoute: AdminPanelSplatRoute,
   ApiSplatRoute: ApiSplatRoute,
   ApiBackupRoute: ApiBackupRoute,
   CmsSplatRoute: CmsSplatRoute,
-  NempoFeedSplatRoute: NempoFeedSplatRoute,
-  NempoMouSplatRoute: NempoMouSplatRoute,
-  TionFeedSplatRoute: TionFeedSplatRoute,
-  AdminPanelIndexRoute: AdminPanelIndexRoute,
   CmsIndexRoute: CmsIndexRoute,
-  NempoFeedIndexRoute: NempoFeedIndexRoute,
-  NempoMouIndexRoute: NempoMouIndexRoute,
-  TionFeedIndexRoute: TionFeedIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
