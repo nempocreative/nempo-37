@@ -189,42 +189,6 @@
     "sha256": "b860a9846cd1314dcd217d843338487b1655d287b861c3013a885f62551e4361"
   },
   {
-    "pointer": "src/assets/nempo-feed-slide-31-background.png.asset.json",
-    "filename": "nempo-feed-slide-31-background.png",
-    "source_url": "https://id-preview--2176f28d-85b1-42d8-9877-0aa921f9ffd5.lovable.app/__l5e/assets-v1/ab4dae4b-fd2a-4532-aa78-25fe6ed6dda3/nempo-feed-slide-31-background.png",
-    "url": "/__l5e/assets-v1/0a0a1e79-cdea-4492-a970-0fe891ddfdd1/nempo-feed-slide-31-background.png",
-    "size": 1970547,
-    "content_type": "image/png",
-    "sha256": "866f35049ca94b506138fa103b4c40290236a6b2fd79440f1b9ec704088b80b8"
-  },
-  {
-    "pointer": "src/assets/nempo-feed-slide-31-frame.png.asset.json",
-    "filename": "music-comedy-night-frame.png",
-    "source_url": "https://id-preview--2176f28d-85b1-42d8-9877-0aa921f9ffd5.lovable.app/__l5e/assets-v1/78e2073b-6c57-44bd-9792-0bbf245be3f8/music-comedy-night-frame.png",
-    "url": "/__l5e/assets-v1/fb420951-cca5-43e4-9447-bb9e148ec89f/music-comedy-night-frame.png",
-    "size": 2821706,
-    "content_type": "image/png",
-    "sha256": "e3662156c80d253fa92a5d89fd6596c7d366cbf54330a5010668f88e29d987be"
-  },
-  {
-    "pointer": "src/assets/nempo-feed-slide-31-gamelan-frame-transparent.png.asset.json",
-    "filename": "nempo-feed-slide-31-gamelan-frame-transparent.png",
-    "source_url": "https://id-preview--2176f28d-85b1-42d8-9877-0aa921f9ffd5.lovable.app/__l5e/assets-v1/bd390db2-4827-4bb2-aab6-8e50bb61d87a/nempo-feed-slide-31-gamelan-frame-transparent.png",
-    "url": "/__l5e/assets-v1/d5d2090b-f990-4444-af1d-3599b7965d2b/nempo-feed-slide-31-gamelan-frame-transparent.png",
-    "size": 2736004,
-    "content_type": "image/png",
-    "sha256": "6844fcea1f92058db6ebb1244947e8da2926edb2ee4ba66915f9029d503691ee"
-  },
-  {
-    "pointer": "src/assets/nempo-feed-slide-32.mp4.asset.json",
-    "filename": "nempo-feed-slide-32.mp4",
-    "source_url": "https://id-preview--2176f28d-85b1-42d8-9877-0aa921f9ffd5.lovable.app/__l5e/assets-v1/f98760ff-2263-46c8-bc0e-b56977d562c7/nempo-feed-slide-32.mp4",
-    "url": "/__l5e/assets-v1/0c4525f3-e2fb-406c-8016-11f283bb9bb2/nempo-feed-slide-32.mp4",
-    "size": 13961724,
-    "content_type": "video/mp4",
-    "sha256": "bc2896b250b4ec13382d5900ead7f3522275ad52ebe306e7f7d3891327c8ca38"
-  },
-  {
     "pointer": "src/assets/invitation-covers/nempo-01.jpg.asset.json",
     "filename": "nempo-01-cover-preview.jpg",
     "source_url": "https://id-preview--2176f28d-85b1-42d8-9877-0aa921f9ffd5.lovable.app/__l5e/assets-v1/8a852fe0-4cff-493e-91c7-83ef8bb062cc/nempo-01-cover-preview.jpg",
