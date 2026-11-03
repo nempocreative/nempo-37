@@ -64,7 +64,7 @@ export default function RecruitmentPage() {
             <h2 className="text-2xl font-black tracking-[-0.035em] sm:text-3xl">Yang kamu dapat</h2>
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
-                { icon: CalendarHeart, t: "Terlibat di event", d: "Ikut jadi bagian tim di acara-acara Nempo." },
+                { icon: CalendarHeart, t: "Terlibat di event", d: "Ikut jadi bagian tim di acara-acara Kala Muda." },
                 { icon: GraduationCap, t: "Belajar langsung", d: "Asah skill kreatif, konten, dan organisasi bareng tim." },
                 { icon: Handshake, t: "Relasi baru", d: "Kenalan dengan anak muda dan kreator se-Jawa Barat." },
                 { icon: FolderOpen, t: "Portofolio nyata", d: "Pengalaman yang bisa kamu tunjukkan ke mana saja." },
@@ -84,7 +84,7 @@ export default function RecruitmentPage() {
           <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
             <div className="rounded-[2rem] border border-[#e5d3e6] bg-white p-5 shadow-xl shadow-[#6e4bb4]/10 sm:p-8">
               <h2 className="text-xl font-black tracking-[-0.03em] sm:text-2xl">Formulir pendaftaran</h2>
-              <p className="mt-1 mb-6 text-sm text-[#62677c]">Cuma butuh 1 menit. Isianmu langsung dibuka di WhatsApp resmi Nempo.</p>
+              <p className="mt-1 mb-6 text-sm text-[#62677c]">Cuma butuh 1 menit. Isianmu langsung dibuka di WhatsApp resmi Kala Muda.</p>
               <CommunityApplicationForm />
             </div>
           </div>
