@@ -19,7 +19,7 @@ import type { MatchItem, RundownItem } from "@/data/temu-tarung";
 import {
   MapPin, Calendar, ArrowLeft, Ticket,
   Users, Star, ShieldAlert, Clock, Car, Train, Navigation,
-  Crown, CheckCircle2, Info, Minus, Plus,
+  Crown, CheckCircle2, Info, Minus, Plus, MessageCircle,
   Swords, HeartPulse, SearchX, Dumbbell, Flame, Moon, HandHeart, ArrowDown,
 } from "lucide-react";
 
@@ -243,6 +243,17 @@ function BookingWidget({ event, tickets, selTicket, qty, g, isPast }: {
           <div className="w-full py-3 rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center gap-2">
             <p className="text-gray-400 text-xs font-semibold">Tambah jumlah tiket terlebih dulu</p>
           </div>
+        ) : tickets.length === 0 ? (
+          <a
+            href={`https://wa.me/6285724981356?text=${encodeURIComponent(`Halo NEMPO, saya mau pilih kursi untuk event ${event.name}.\nNama: \nJumlah orang: `)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full py-3.5 rounded-xl font-extrabold text-sm text-white flex items-center justify-center gap-2 transition-all hover:brightness-105 active:scale-[0.98] shadow-lg"
+            style={{ background: `linear-gradient(135deg, ${g.from}, ${g.to})`, boxShadow: `0 8px 20px -6px ${g.from}60` }}
+          >
+            <MessageCircle className="h-4 w-4" />
+            Chat Admin · Pilih Kursi
+          </a>
         ) : (
           <Link href={`/event/${event.slug}/checkout${ticket ? `?ticket=${ticket.id}&qty=${qty}` : ""}`}>
             <button className="w-full py-3.5 rounded-xl font-extrabold text-sm text-white flex items-center justify-center gap-2 transition-all hover:brightness-105 active:scale-[0.98] shadow-lg"
@@ -253,7 +264,11 @@ function BookingWidget({ event, tickets, selTicket, qty, g, isPast }: {
           </Link>
         )}
         <p className="text-gray-300 text-[10px] text-center mt-2 leading-relaxed">
-          {isPast ? "Penjualan tiket ditutup karena event sudah selesai" : "Tiket dikirim via WhatsApp · Refund sesuai kebijakan"}
+          {isPast
+            ? "Penjualan tiket ditutup karena event sudah selesai"
+            : tickets.length === 0
+              ? "Datang langsung aja · Chat admin pilih kursi"
+              : "Tiket dikirim via WhatsApp · Refund sesuai kebijakan"}
         </p>
       </div>
     </div>
@@ -2053,14 +2068,26 @@ export default function EventDetail() {
               )}
 
               {tickets.length === 0 && (
-                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: g.light }}>
-                    <Ticket className="h-4 w-4" style={{ color: g.from }} />
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0" style={{ background: g.light }}>
+                      <Ticket className="h-4 w-4" style={{ color: g.from }} />
+                    </div>
+                    <div>
+                      <p className="text-gray-800 font-bold text-sm">GRATIS</p>
+                      <p className="text-gray-400 text-xs mt-0.5">Seperti nongkrong biasa — datang langsung aja</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-gray-800 font-bold text-sm">Tiket Tersedia</p>
-                    <p className="text-gray-400 text-xs mt-0.5">Hubungi penyelenggara untuk info tiket</p>
-                  </div>
+                  <a
+                    href={`https://wa.me/6285724981356?text=${encodeURIComponent(`Halo NEMPO, saya mau pilih kursi untuk event ${event.name}.\nNama: \nJumlah orang: `)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 w-full py-3 rounded-xl font-extrabold text-xs text-white flex items-center justify-center gap-2 transition-all hover:brightness-105 active:scale-[0.98]"
+                    style={{ background: `linear-gradient(135deg, ${g.from}, ${g.to})` }}
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    Chat Admin · Pilih Kursi
+                  </a>
                 </div>
               )}
 
