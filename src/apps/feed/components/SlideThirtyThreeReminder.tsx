@@ -62,9 +62,9 @@ export function SlideThirtyThreeReminder() {
       </div>
 
       {/* Reminder ribbon: the BESOK! chip sits inline with the reminder line. */}
-      <div className="musicomedy-s33-ribbon absolute left-[31%] right-[31%] top-[3.2%]">
+      <div className="musicomedy-s33-ribbon absolute left-[39%] right-[19%] top-[2.6%]">
         <p className="musicomedy-s33-ribbon-text">
-          <span className="musicomedy-s33-stamp-inner">BESOK!</span>
+          <span className="musicomedy-s33-stamp-inner">BESOK!</span><br />
           Jangan lupa datang besok,<br />kita seru-seruan bareng!
         </p>
       </div>
