@@ -1332,7 +1332,7 @@
 
 /* Slide 33 — animated "datang besok" reminder over the shared MusiComedy frame.
    Scoped to slide 33 only: slides 31 and 32 keep their own artwork. */
-.musicomedy-s33 {
+.musicomedy-s33 { container-type: size;
   --s33-gold: #ffe3a3;
   --s33-amber: #ffc36b;
   --s33-cream: #fff8e9;
@@ -1438,7 +1438,7 @@
     0 10px 24px rgba(6, 20, 34, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.18);
   color: var(--s33-cream);
-  font-size: clamp(11px, 1.6vw, 16px);
+  font-size: 2.2cqw;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
@@ -1459,7 +1459,7 @@
 }
 
 .musicomedy-s33-ribbon {
-  padding: clamp(5px, 1.1%, 10px) clamp(9px, 2.2%, 16px);
+  padding: 1.3cqw 2.4cqw;
   background: linear-gradient(
     100deg,
     #fff8e9,
@@ -1503,7 +1503,7 @@
   position: relative;
   margin: 0;
   color: #a8262b;
-  font-size: clamp(11px, 1.7vw, 17px);
+  font-size: 2.5cqw;
   font-weight: 700;
   letter-spacing: 0.01em;
   line-height: 1.25;
