@@ -10,7 +10,8 @@
  * still debug their own site.
  */
 
-const LOVABLE_HOSTS = ["lovable.app", "lovable.dev", "localhost", "127.0.0.1"];
+// Lovable's own preview/host: the owner keeps a fully inspectable workspace.
+const OWNER_HOSTS = ["lovable.app", "lovable.dev"];
 
 /** Keys that open DevTools, view source, or save the page. */
 export function shouldBlockInspectKey(
@@ -38,7 +39,7 @@ export function shouldBlockContextMenu(target: EventTarget | null): boolean {
 
 /** True when the guard must not run (Lovable preview, local dev). */
 export function isInspectGuardDisabled(hostname: string): boolean {
-  return LOVABLE_HOSTS.some(
+  return OWNER_HOSTS.some(
     (host) => hostname === host || hostname.endsWith(`.${host}`),
   );
 }

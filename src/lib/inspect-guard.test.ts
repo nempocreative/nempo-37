@@ -45,13 +45,13 @@ describe("inspect guard", () => {
     expect(shouldBlockContextMenu(null)).toBe(true);
   });
 
-  it("stays off in Lovable preview and local dev, on in production", () => {
+  it("stays off on Lovable's own hosts, on everywhere else", () => {
     expect(isInspectGuardDisabled("id-preview--abc.lovable.app")).toBe(true);
     expect(isInspectGuardDisabled("lovable.dev")).toBe(true);
-    expect(isInspectGuardDisabled("localhost")).toBe(true);
     expect(isInspectGuardDisabled("nempogarut.com")).toBe(false);
     expect(isInspectGuardDisabled("www.nempogarut.com")).toBe(false);
     expect(isInspectGuardDisabled("my-app.vercel.app")).toBe(false);
+    expect(isInspectGuardDisabled("localhost")).toBe(false);
   });
 });
 
