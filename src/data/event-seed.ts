@@ -52,6 +52,7 @@ export function eventSeedInsertSql(event: EventSeed): string {
   const text = (value: string) => `'${value.replace(/'/g, "''")}'`;
   return [
     "insert into public.events (slug, name, title, category, date, time_start, time_end, location, description, organizer, price, guest_stars, image, banner_image, active, featured, crew_active, allow_voucher, service_fee_percent, visitors)",
-    `values (${text(event.slug)}, ${text(event.name)}, ${text(event.title)}, ${text(event.category)}, ${text(event.date)}, ${text(event.time_start)}, ${text(event.time_end)}, ${text(event.location)}, ${text(event.description)}, ${text(event.organizer)}, ${event.price}, ${text(json)}::jsonb, ${text(event.image)}, ${text(event.image)}, ${event.active}, ${event.featured}, false, false, 0, 0);`,
+    `select ${text(event.slug)}, ${text(event.name)}, ${text(event.title)}, ${text(event.category)}, ${text(event.date)}, ${text(event.time_start)}, ${text(event.time_end)}, ${text(event.location)}, ${text(event.description)}, ${text(event.organizer)}, ${event.price}, ${text(json)}::jsonb, ${text(event.image)}, ${text(event.image)}, ${event.active}, ${event.featured}, false, false, 0, 0`,
+    `where not exists (select 1 from public.events where slug = ${text(event.slug)});`,
   ].join("\n");
 }

@@ -13,5 +13,6 @@
 - [x] Data impor lama tidak dipertahankan: setelah remix, wisata, kuliner, penginapan, perlombaan, dan kamus Sunda diverifikasi kosong; jangan impor ulang.
 
 ## Terbuka
+- [ ] Pulihkan data MusiComedy Night dan verifikasi tautan Event Mendatang, daftar event, serta detail event.
 - [ ] Unggah foto dari `/cms` belum aktif.
 - [ ] Kompres foto unggahan baru ke WebP.

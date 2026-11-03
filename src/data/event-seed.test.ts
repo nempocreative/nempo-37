@@ -23,6 +23,15 @@ describe("event seed data", () => {
     expect(event?.price).toBe(0);
   });
 
+  it("restores the upcoming event as active", () => {
+    expect(event?.active).toBe(true);
+  });
+
+  it("does not duplicate an existing event when restoring after a remix", () => {
+    const sql = eventSeedInsertSql(EVENT_SEEDS[0]);
+    expect(sql).toContain("where not exists (select 1 from public.events where slug = 'musicomedy-night')");
+  });
+
   it("keeps the announced venue and guest star", () => {
     expect(event?.location).toBe("Good Story Cafe, Jl. Sudirman Copong No. 11, Garut");
     expect(event?.guest_stars).toEqual([{ name: "Saduli Ragap", role: "Bintang Tamu" }]);
