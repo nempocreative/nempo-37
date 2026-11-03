@@ -505,7 +505,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
                   lineHeight: 1.1,
                   whiteSpace: "nowrap",
                 }}>
-                  NEMPO
+                  NEMPO GARUT
                 </span>
                 <span style={{
                   fontFamily: "'Plus Jakarta Sans','Inter',sans-serif",
