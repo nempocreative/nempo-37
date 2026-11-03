@@ -113,7 +113,8 @@ type FeedSlide =
   | 29
   | 30
   | 31
-  | 32;
+  | 32
+  | 33;
 
 type ClientSlide = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -1879,7 +1880,7 @@ function FeedArtwork({
   exportRef: RefObject<HTMLElement | null>;
 }) {
   // Both MusiComedy slides share the same artwork and branding.
-  const isMusiComedySlide = selectedSlide === 31 || selectedSlide === 32;
+  const isMusiComedySlide = selectedSlide === 31 || selectedSlide === 32 || selectedSlide === 33;
   const slide = isMusiComedySlide ? 30 : selectedSlide;
   return (
     <main
@@ -2125,7 +2126,7 @@ function FeedArtwork({
             </div>
           ) : slide === 1 ? (
             <span className="rounded-full border border-white/25 bg-[#062f4d]/25 px-2 py-1 text-[8px] font-black tracking-[0.12em] text-white/80">
-              0{slide} / 32
+              {String(slide).padStart(2, "0")} / 33
             </span>
           ) : null}
         </header>
@@ -2646,7 +2647,7 @@ function App() {
   const exportRef = useRef<HTMLElement | null>(null);
   const isNempoFeed = activeFeed === 'nempo';
   const isHighQualityNempoStorySlide =
-    isNempoFeed && activeSlide >= 20 && activeSlide <= 32;
+    isNempoFeed && activeSlide >= 20 && activeSlide <= 33;
   const isCoupon = activeFeed === 'coupon';
   const isQCard = activeFeed === 'qcard';
   const isPhotobooth = activeFeed === 'photobooth';
@@ -2780,7 +2781,7 @@ function App() {
           highQualityCanvas.height,
         );
         renderedCanvas = highQualityCanvas;
-      } else if (isNempoFeed && (activeSlide === 30 || activeSlide === 31 || activeSlide === 32)) {
+      } else if (isNempoFeed && (activeSlide === 30 || activeSlide === 31 || activeSlide === 32 || activeSlide === 33)) {
         const artworkWidth = artwork.getBoundingClientRect().width;
         const scale = (outputWidth / artworkWidth) * renderScale;
         renderedCanvas = await domToCanvas(artwork, {
@@ -2951,7 +2952,7 @@ function App() {
       ? isGgsStory
         ? [1, 2, 3]
         : [1, 2, 3, 4, 5, 6]
-      : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32];
+      : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
   const selectedSlide =
     isGgsFeed ? activeClientSlide : activeSlide;
 
@@ -3134,7 +3135,7 @@ function App() {
                   ? 'Menyiapkan PNG…'
                   : isCalendar
                     ? 'Download PNG · 50×70 cm'
-                    : isNempoFeed && (activeSlide === 30 || activeSlide === 31 || activeSlide === 32)
+                    : isNempoFeed && (activeSlide === 30 || activeSlide === 31 || activeSlide === 32 || activeSlide === 33)
                       ? 'Download PNG · 3×'
                     : isPhotobooth || isGgsFeed || isHighQualityNempoStorySlide
                       ? 'Download PNG · 3×'
