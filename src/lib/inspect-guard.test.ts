@@ -54,3 +54,52 @@ describe("inspect guard", () => {
     expect(isInspectGuardDisabled("my-app.vercel.app")).toBe(false);
   });
 });
+
+describe("inspect guard wiring", () => {
+  it("blocks right-click, DevTools keys and photo drags once installed", () => {
+    const cleanup = installInspectGuard("nempogarut.com");
+
+    const menu = new MouseEvent("contextmenu", { bubbles: true, cancelable: true });
+    document.body.dispatchEvent(menu);
+    expect(menu.defaultPrevented).toBe(true);
+
+    const field = document.createElement("input");
+    document.body.appendChild(field);
+    const inField = new MouseEvent("contextmenu", { bubbles: true, cancelable: true });
+    field.dispatchEvent(inField);
+    expect(inField.defaultPrevented).toBe(false);
+    field.remove();
+
+    const devtools = new KeyboardEvent("keydown", { key: "F12", cancelable: true });
+    window.dispatchEvent(devtools);
+    expect(devtools.defaultPrevented).toBe(true);
+
+    const typed = new KeyboardEvent("keydown", { key: "u", cancelable: true });
+    window.dispatchEvent(typed);
+    expect(typed.defaultPrevented).toBe(false);
+
+    const photo = document.createElement("img");
+    document.body.appendChild(photo);
+    const drag = new Event("dragstart", { bubbles: true, cancelable: true });
+    photo.dispatchEvent(drag);
+    expect(drag.defaultPrevented).toBe(true);
+    photo.remove();
+
+    cleanup();
+
+    const afterMenu = new MouseEvent("contextmenu", { bubbles: true, cancelable: true });
+    document.body.dispatchEvent(afterMenu);
+    expect(afterMenu.defaultPrevented).toBe(false);
+    const afterKey = new KeyboardEvent("keydown", { key: "F12", cancelable: true });
+    window.dispatchEvent(afterKey);
+    expect(afterKey.defaultPrevented).toBe(false);
+  });
+
+  it("installs nothing on Lovable preview hosts", () => {
+    const cleanup = installInspectGuard("id-preview--abc.lovable.app");
+    const menu = new MouseEvent("contextmenu", { bubbles: true, cancelable: true });
+    document.body.dispatchEvent(menu);
+    expect(menu.defaultPrevented).toBe(false);
+    cleanup();
+  });
+});
