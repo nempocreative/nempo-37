@@ -1329,3 +1329,203 @@
     will-change: auto;
   }
 }
+
+/* Slide 33 — animated "datang besok" reminder over the shared MusiComedy frame.
+   Scoped to slide 33 only: slides 31 and 32 keep their own artwork. */
+.musicomedy-s33 {
+  --s33-gold: #ffe3a3;
+  --s33-amber: #ffc36b;
+  --s33-cream: #fff8e9;
+  --s33-red: #ce363b;
+}
+
+.musicomedy-s33-glow {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 195, 107, 0.55) 0%,
+    rgba(255, 165, 74, 0.28) 42%,
+    transparent 72%
+  );
+  mix-blend-mode: screen;
+  filter: blur(6px);
+  animation: musicomedy-s33-glow 4.6s ease-in-out infinite;
+}
+
+@keyframes musicomedy-s33-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate(-50%, 0) scale(0.94);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1.06);
+  }
+}
+
+.musicomedy-s33-note {
+  color: var(--s33-gold);
+  font-weight: 700;
+  line-height: 1;
+  text-shadow:
+    0 0 12px rgba(255, 195, 107, 0.75),
+    0 2px 6px rgba(6, 20, 34, 0.55);
+  opacity: 0;
+  animation-name: musicomedy-s33-note;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes musicomedy-s33-note {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(-6deg) scale(0.8);
+  }
+  14% {
+    opacity: 0.95;
+  }
+  55% {
+    opacity: 0.8;
+    transform: translate(6%, -90%) rotate(8deg) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-4%, -175%) rotate(-4deg) scale(0.9);
+  }
+}
+
+.musicomedy-s33-spark {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    #fff8e9 0%,
+    rgba(255, 227, 163, 0.9) 45%,
+    transparent 72%
+  );
+  box-shadow: 0 0 10px rgba(255, 227, 163, 0.8);
+  opacity: 0;
+  animation: musicomedy-s33-spark 2.8s ease-in-out infinite;
+}
+
+@keyframes musicomedy-s33-spark {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  70% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+.musicomedy-s33-stamp-inner {
+  display: inline-block;
+  margin-right: 0.45em;
+  vertical-align: 0.12em;
+  line-height: 1;
+  padding: 0.28em 0.62em;
+  background: linear-gradient(160deg, #e0474c, var(--s33-red) 60%, #a8262b);
+  border: 2px solid rgba(255, 248, 233, 0.85);
+  border-radius: 8px;
+  box-shadow:
+    0 10px 24px rgba(6, 20, 34, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  color: var(--s33-cream);
+  font-size: clamp(11px, 1.6vw, 16px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  animation: musicomedy-s33-stamp 1.9s ease-in-out infinite;
+}
+
+@keyframes musicomedy-s33-stamp {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(1.09) rotate(-1.5deg);
+  }
+  55% {
+    transform: scale(0.985) rotate(1deg);
+  }
+}
+
+.musicomedy-s33-ribbon {
+  padding: clamp(5px, 1.1%, 10px) clamp(9px, 2.2%, 16px);
+  background: linear-gradient(
+    100deg,
+    #fff8e9,
+    #ffefcf 52%,
+    #fff8e9
+  );
+  border: 2px solid rgba(206, 54, 59, 0.75);
+  border-radius: 999px;
+  box-shadow:
+    0 10px 26px rgba(6, 20, 34, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-align: center;
+}
+
+.musicomedy-s33-ribbon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 195, 107, 0.55) 48%,
+    transparent 66%
+  );
+  transform: translateX(-120%);
+  animation: musicomedy-s33-sheen 4.8s ease-in-out infinite;
+}
+
+@keyframes musicomedy-s33-sheen {
+  0% {
+    transform: translateX(-120%);
+  }
+  55%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.musicomedy-s33-ribbon-text {
+  position: relative;
+  margin: 0;
+  color: #a8262b;
+  font-size: clamp(11px, 1.7vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .musicomedy-s33-glow,
+  .musicomedy-s33-note,
+  .musicomedy-s33-spark,
+  .musicomedy-s33-stamp-inner,
+  .musicomedy-s33-ribbon::before {
+    animation: none;
+  }
+  .musicomedy-s33-glow {
+    opacity: 0.7;
+  }
+  .musicomedy-s33-note {
+    opacity: 0.85;
+    transform: translateY(-45%);
+  }
+  .musicomedy-s33-spark {
+    opacity: 0.8;
+  }
+}

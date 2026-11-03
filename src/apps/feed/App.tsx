@@ -62,6 +62,7 @@ import { SlideSangkuriangCover } from './components/SlideSangkuriangCover';
 import { SlideTwentyNineCafeCover } from './components/SlideTwentyNineCafeCover';
 import { SlideThirtySumpahPemuda } from './components/SlideThirtySumpahPemuda';
 import { SlideThirtyOneBackground } from './components/SlideThirtyOneBackground';
+import { SlideThirtyThreeReminder } from './components/SlideThirtyThreeReminder';
 import { renderNempoSlide20Png } from './lib/renderNempoSlide20Png';
 import {
   GgsBeautySlideOne,
@@ -1991,6 +1992,7 @@ function FeedArtwork({
       )}
       {slide === 1 && <CompactFooterArt />}
       {isMusiComedySlide ? <SlideThirtyOneBackground showTalent={selectedSlide !== 32} /> : slide === 30 && <SlideThirtySumpahPemuda />}
+      {selectedSlide === 33 && <SlideThirtyThreeReminder />}
 
       <div
         className="relative z-10 flex h-full flex-col p-[7.5%]"

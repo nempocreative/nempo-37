@@ -23,7 +23,7 @@ export function SlideThirtyThreeReminder() {
     <section
       role="group"
       aria-label="Pengingat datang besok ke MusiComedy Night"
-      className="absolute inset-0 z-[4] overflow-hidden pointer-events-none"
+      className="musicomedy-s33 absolute inset-0 z-[4] overflow-hidden pointer-events-none"
     >
       {/* Warm glow pulse behind the logo */}
       <div
@@ -61,17 +61,10 @@ export function SlideThirtyThreeReminder() {
         ))}
       </div>
 
-      {/* BESOK! stamp */}
-      <div
-        aria-hidden="true"
-        className="musicomedy-s33-stamp absolute right-[4%] top-[36%]"
-      >
-        <span className="musicomedy-s33-stamp-inner">BESOK!</span>
-      </div>
-
-      {/* Reminder ribbon */}
-      <div className="musicomedy-s33-ribbon absolute inset-x-[5%] bottom-[3.5%]">
+      {/* Reminder ribbon: the BESOK! chip sits inline with the reminder line. */}
+      <div className="musicomedy-s33-ribbon absolute left-[30%] right-[17%] top-[4.5%]">
         <p className="musicomedy-s33-ribbon-text">
+          <span className="musicomedy-s33-stamp-inner">BESOK!</span>
           Jangan lupa datang besok — kita seru-seruan bareng!
         </p>
       </div>
