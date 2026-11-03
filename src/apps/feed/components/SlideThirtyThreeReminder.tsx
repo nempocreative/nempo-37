@@ -80,6 +80,23 @@ export function SlideThirtyThreeReminder() {
           Jangan lupa datang besok,<br />kita seru-seruan bareng!
         </p>
       </div>
+
+      {/* Free-entry explanation, filling the middle of the poster. */}
+      <div className="musicomedy-s33-ribbon absolute left-[24%] right-[24%] top-[45%]">
+        <p className="musicomedy-s33-ribbon-text">
+          <span className="musicomedy-s33-free">GRATIS!</span><br />
+          Cukup order, datang &amp; nongkrong<br />seperti biasa ☕
+        </p>
+      </div>
+
+      {/* Reservation + seat picking info (same contact as nempogarut.com). */}
+      <div className="musicomedy-s33-ribbon absolute left-[14%] right-[14%] top-[62%]">
+        <p className="musicomedy-s33-ribbon-text musicomedy-s33-ribbon-text--small">
+          Mau amankan kursi? Reservasi &amp; pilih kursi lewat<br />
+          <span className="musicomedy-s33-wa">WhatsApp 0857-2498-1356</span><br />
+          atau buka www.nempogarut.com
+        </p>
+      </div>
     </section>
   );
 }
