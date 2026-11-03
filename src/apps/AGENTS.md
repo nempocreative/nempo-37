@@ -1,5 +1,3 @@
-# Sub-app rules
+# Rules for `src/apps/`
 
-Rules here apply to files under `src/apps/`. Read this before changing them.
-
-- Sub-app stylesheets (`src/apps/*/index.css`) can end up loaded on main-site pages, so they must never set shared theme variables (`--primary`, `--primary-foreground`, ...) to placeholder values; why: a leaked placeholder made white text on every main-site page fall back to dark.
+- Other Replit artifacts live in `src/apps/<key>/` (own `@/apps/<key>/` imports, `entry.tsx`, public files under `public/<base>/`) and mount at `/<base>` via `src/routes/<base>.index.tsx` + `<base>.$.tsx` using `AppShell`; why: each was a separate Vite app and they must not collide.
