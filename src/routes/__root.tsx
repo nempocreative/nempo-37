@@ -14,6 +14,7 @@ import { JingleProvider } from "@/contexts/jingle-context";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { installInspectGuard } from "../lib/inspect-guard";
 
 function NotFoundComponent() {
   return (
@@ -133,6 +134,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Deterrent only: hides right-click, DevTools shortcuts and photo dragging.
+  useEffect(() => installInspectGuard(), []);
 
   return (
     <QueryClientProvider client={queryClient}>
