@@ -45,9 +45,9 @@ describe("inspect guard", () => {
     expect(shouldBlockContextMenu(null)).toBe(true);
   });
 
-  it("stays off on Lovable's own hosts, on everywhere else", () => {
-    expect(isInspectGuardDisabled("id-preview--abc.lovable.app")).toBe(true);
-    expect(isInspectGuardDisabled("lovable.dev")).toBe(true);
+  it("is active on every host, including the Lovable preview", () => {
+    expect(isInspectGuardDisabled("id-preview--abc.lovable.app")).toBe(false);
+    expect(isInspectGuardDisabled("nempo.lovable.app")).toBe(false);
     expect(isInspectGuardDisabled("nempogarut.com")).toBe(false);
     expect(isInspectGuardDisabled("www.nempogarut.com")).toBe(false);
     expect(isInspectGuardDisabled("my-app.vercel.app")).toBe(false);
@@ -95,11 +95,11 @@ describe("inspect guard wiring", () => {
     expect(afterKey.defaultPrevented).toBe(false);
   });
 
-  it("installs nothing on Lovable preview hosts", () => {
+  it("blocks right-click on the Lovable preview host too", () => {
     const cleanup = installInspectGuard("id-preview--abc.lovable.app");
     const menu = new MouseEvent("contextmenu", { bubbles: true, cancelable: true });
     document.body.dispatchEvent(menu);
-    expect(menu.defaultPrevented).toBe(false);
+    expect(menu.defaultPrevented).toBe(true);
     cleanup();
   });
 });

@@ -6,12 +6,12 @@
  * the page from another browser still sees the same HTML. Real secrets must
  * stay on the server.
  *
- * The guard is skipped on Lovable's own preview/host origins so the owner can
- * still debug their own site.
+ * The owner asked for the guard everywhere, including the Lovable preview, so
+ * no host is exempt.
  */
 
-// Lovable's own preview/host: the owner keeps a fully inspectable workspace.
-const OWNER_HOSTS = ["lovable.app", "lovable.dev"];
+// Hosts where the guard is skipped. Intentionally empty: active on every host.
+const OWNER_HOSTS: string[] = [];
 
 /** Keys that open DevTools, view source, or save the page. */
 export function shouldBlockInspectKey(
@@ -37,7 +37,7 @@ export function shouldBlockContextMenu(target: EventTarget | null): boolean {
   return editable === null;
 }
 
-/** True when the guard must not run (Lovable preview, local dev). */
+/** True when the guard must not run on this host (none by default). */
 export function isInspectGuardDisabled(hostname: string): boolean {
   return OWNER_HOSTS.some(
     (host) => hostname === host || hostname.endsWith(`.${host}`),
