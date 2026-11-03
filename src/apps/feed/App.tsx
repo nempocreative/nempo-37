@@ -1992,6 +1992,7 @@ function FeedArtwork({
       )}
       {slide === 1 && <CompactFooterArt />}
       {isMusiComedySlide ? <SlideThirtyOneBackground showTalent={selectedSlide !== 32} /> : slide === 30 && <SlideThirtySumpahPemuda />}
+      {selectedSlide === 33 && <SlideThirtyThreeReminder />}
 
       <div
         className="relative z-10 flex h-full flex-col p-[7.5%]"
