@@ -7,6 +7,9 @@ const notes = [
   { glyph: '♪', left: '6%', bottom: '58%', size: 'clamp(13px, 2.4vw, 24px)', delay: '2.6s', duration: '6.4s' },
   { glyph: '♬', left: '88%', bottom: '22%', size: 'clamp(16px, 3vw, 30px)', delay: '3.5s', duration: '5.5s' },
   { glyph: '♪', left: '14%', bottom: '18%', size: 'clamp(12px, 2.2vw, 22px)', delay: '4.3s', duration: '6.1s' },
+  { glyph: '♫', left: '30%', bottom: '12%', size: 'clamp(14px, 2.6vw, 26px)', delay: '1.9s', duration: '6.8s' },
+  { glyph: '♪', left: '66%', bottom: '9%', size: 'clamp(13px, 2.4vw, 24px)', delay: '3.1s', duration: '7.2s' },
+  { glyph: '♬', left: '47%', bottom: '4%', size: 'clamp(15px, 2.8vw, 28px)', delay: '4.9s', duration: '6.5s' },
 ];
 
 const sparks = [
@@ -16,6 +19,9 @@ const sparks = [
   { left: '86%', top: '60%', delay: '2.2s' },
   { left: '50%', top: '34%', delay: '2.9s' },
   { left: '26%', top: '20%', delay: '3.6s' },
+  { left: '38%', top: '64%', delay: '1.1s' },
+  { left: '63%', top: '72%', delay: '2.5s' },
+  { left: '48%', top: '56%', delay: '4.1s' },
 ];
 
 export function SlideThirtyThreeReminder() {
@@ -29,6 +35,12 @@ export function SlideThirtyThreeReminder() {
       <div
         aria-hidden="true"
         className="musicomedy-s33-glow absolute left-1/2 top-[13%] h-[26%] w-[62%] -translate-x-1/2"
+      />
+
+      {/* Soft stage light filling the lower half of the poster */}
+      <div
+        aria-hidden="true"
+        className="musicomedy-s33-glow musicomedy-s33-glow--low absolute left-1/2 top-[46%] h-[32%] w-[74%] -translate-x-1/2"
       />
 
       {/* Floating music notes */}
