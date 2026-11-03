@@ -14,5 +14,7 @@
 - [x] Data impor lama tidak dipertahankan: setelah remix, wisata, kuliner, penginapan, perlombaan, dan kamus Sunda diverifikasi kosong; jangan impor ulang.
 
 ## Terbuka
+- [ ] Pindahkan data dan akun admin ke Supabase milik pengguna: menunggu ekspor Cloud dan impor ke tujuan.
+- [ ] Verifikasi koneksi Vercel ke Supabase pengguna: menunggu pengaturan tujuan di Vercel dan deploy.
 - [ ] Unggah foto dari `/cms` belum aktif.
 - [ ] Kompres foto unggahan baru ke WebP.
