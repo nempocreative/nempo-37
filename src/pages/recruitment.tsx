@@ -7,9 +7,9 @@ export default function RecruitmentPage() {
   return (
     <Layout>
       <SEO
-        title="Recruitment — Gabung Nempo Community"
-        description="Isi formulir open recruitment Nempo Community. Terbuka untuk pelajar, mahasiswa, dan umum tanpa biaya pendaftaran."
-        keywords="recruitment Nempo, open recruitment, komunitas anak muda Jawa Barat, gabung komunitas"
+        title="Recruitment — Gabung Kala Muda Community"
+        description="Isi formulir open recruitment Kala Muda Community. Terbuka untuk pelajar, mahasiswa, dan umum tanpa biaya pendaftaran."
+        keywords="recruitment Kala Muda, open recruitment, komunitas anak muda Jawa Barat, gabung komunitas"
         path="/recruitment"
       />
 
@@ -31,7 +31,7 @@ export default function RecruitmentPage() {
             </span>
             <h1 className="mt-4 max-w-2xl text-3xl font-black leading-tight tracking-[-0.04em] text-[#37215b] sm:text-4xl lg:text-5xl">
               Gabung bareng{" "}
-              <span className="text-[#a62f78]">Nempo Community.</span>
+              <span className="text-[#a62f78]">Kala Muda Community.</span>
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-7 text-[#62677c] sm:text-base">
               Isi formulir singkat ini dan ceritakan minatmu. Tim kami akan
