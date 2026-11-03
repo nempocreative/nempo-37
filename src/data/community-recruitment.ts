@@ -24,7 +24,7 @@ export type CommunityApplication = {
 /** Isi pesan WhatsApp yang disiapkan setelah formulir diisi. */
 export function buildApplicationMessage(app: CommunityApplication) {
   const lines = [
-    "Halo Nempo! Saya mau daftar Nempo Community.",
+    "Halo Nempo! Saya mau daftar Kala Muda Community.",
     "",
     `Nama: ${app.full_name}`,
     `WhatsApp: ${app.whatsapp}`,
