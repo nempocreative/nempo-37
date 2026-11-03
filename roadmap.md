@@ -12,5 +12,6 @@
 - [x] Data impor lama tidak dipertahankan: setelah remix, wisata, kuliner, penginapan, perlombaan, dan kamus Sunda diverifikasi kosong; jangan impor ulang.
 
 ## Terbuka
+- [ ] Jelaskan langkah deploy Vercel dan periksa kecocokan pengaturan proyek saat ini.
 - [ ] Unggah foto dari `/cms` belum aktif.
 - [ ] Kompres foto unggahan baru ke WebP.
