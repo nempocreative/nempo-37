@@ -1431,7 +1431,7 @@
 
 .musicomedy-s33-stamp-inner {
   display: inline-block;
-  padding: 0.34em 0.75em;
+  padding: 0.28em 0.62em;
   background: linear-gradient(160deg, #e0474c, var(--s33-red) 60%, #a8262b);
   border: 2px solid rgba(255, 248, 233, 0.85);
   border-radius: 8px;
@@ -1439,7 +1439,7 @@
     0 10px 24px rgba(6, 20, 34, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.18);
   color: var(--s33-cream);
-  font-size: clamp(14px, 2.4vw, 26px);
+  font-size: clamp(12px, 2vw, 22px);
   font-weight: 800;
   letter-spacing: 0.08em;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);

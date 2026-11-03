@@ -64,7 +64,7 @@ export function SlideThirtyThreeReminder() {
       {/* BESOK! stamp */}
       <div
         aria-hidden="true"
-        className="musicomedy-s33-stamp absolute left-[55%] top-[0.5%]"
+        className="musicomedy-s33-stamp absolute left-[55%] top-[1.2%]"
       >
         <span className="musicomedy-s33-stamp-inner">BESOK!</span>
       </div>
