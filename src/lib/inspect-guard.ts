@@ -43,9 +43,11 @@ export function isInspectGuardDisabled(hostname: string): boolean {
   );
 }
 
-export function installInspectGuard(): () => void {
+export function installInspectGuard(
+  hostname: string = typeof window === "undefined" ? "" : window.location.hostname,
+): () => void {
   if (typeof window === "undefined") return () => {};
-  if (isInspectGuardDisabled(window.location.hostname)) return () => {};
+  if (isInspectGuardDisabled(hostname)) return () => {};
 
   const onContextMenu = (event: MouseEvent) => {
     if (shouldBlockContextMenu(event.target)) event.preventDefault();
