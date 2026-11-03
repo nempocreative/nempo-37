@@ -23,7 +23,7 @@ export function SlideThirtyThreeReminder() {
     <section
       role="group"
       aria-label="Pengingat datang besok ke MusiComedy Night"
-      className="absolute inset-0 z-[4] overflow-hidden pointer-events-none"
+      className="musicomedy-s33 absolute inset-0 z-[4] overflow-hidden pointer-events-none"
     >
       {/* Warm glow pulse behind the logo */}
       <div
