@@ -1425,12 +1425,11 @@
   }
 }
 
-.musicomedy-s33-stamp {
-  transform: translateX(-50%) rotate(-8deg);
-}
-
 .musicomedy-s33-stamp-inner {
   display: inline-block;
+  margin-right: 0.45em;
+  vertical-align: 0.12em;
+  line-height: 1;
   padding: 0.28em 0.62em;
   background: linear-gradient(160deg, #e0474c, var(--s33-red) 60%, #a8262b);
   border: 2px solid rgba(255, 248, 233, 0.85);
