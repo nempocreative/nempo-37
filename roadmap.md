@@ -8,6 +8,7 @@
 - [x] Contoh pengaturan deploy di `.env.example`.
 
 - [x] Akun admin admin@nempogarut.com dibuat; 109 data situs (wisata, kuliner, penginapan, lomba, kamus Sunda) dimasukkan ke database.
+- [x] Data impor lama tidak dipertahankan: setelah remix, wisata, kuliner, penginapan, perlombaan, dan kamus Sunda diverifikasi kosong; jangan impor ulang.
 
 ## Terbuka
 - [ ] Unggah foto dari `/cms` belum aktif.
