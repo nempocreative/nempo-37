@@ -10,9 +10,9 @@ Situs dan CMS saat ini memakai publishable key dengan pengaman akses tabel. Secr
 
 ## 2. Pindahkan data dan akun
 
-Di Lovable, buka **More → Database → Manage → Settings → Export project data → Export data**. Pilih kartu **Database → Export → Start export**. Unduh hasil ekspor dari tautan email atau **More → Storage**.
+Jika tombol ekspor bermasalah atau tidak tersedia, gunakan file salinan `nempo-database-salinan.sql` (di Files): jalankan sekali di SQL Editor Supabase tujuan. File itu membawa struktur tabel, kebijakan keamanan, dan data yang ada.
 
-Ekspor membawa struktur tabel, data, serta akun pengguna beserta hash password. Ekspor tidak membawa file storage, secrets, atau pengaturan penyedia login. Impor ekspor itu ke proyek Supabase tujuan milik Anda, bukan ke database Cloud yang masih dipakai preview.
+Ekspor membawa struktur tabel, data, serta akun pengguna beserta hash password. Ekspor tidak membawa file storage, secrets, atau pengaturan penyedia login. Impor ekspor itu ke proyek Supabase tujuan milik Anda, bukan ke database Cloud yang masih dipakai preview. File salinan SQL tidak membawa akun pengguna: buat ulang akun admin di Supabase tujuan (Authentication → Add user), lalu tambahkan baris perannya di tabel `user_roles`.
 
 Pastikan tabel `events`, `event_tickets`, `user_roles` dan fungsi `has_role` ikut pindah. MusiComedy Night harus ada dengan slug `musicomedy-night` dan aktif. Jangan isi ulang kumpulan wisata, kuliner, penginapan, perlombaan dan Kamus Sunda lama yang sudah dihapus.
 
