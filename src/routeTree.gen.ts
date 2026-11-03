@@ -23,6 +23,8 @@ import { Route as ApiSplatRouteImport } from './routes/api/$'
 import { Route as ApiBackupRouteImport } from './routes/api/backup'
 import { Route as CmsIndexRouteImport } from './routes/cms.index'
 import { Route as CmsSplatRouteImport } from './routes/cms.$'
+import { Route as NempoFeedIndexRouteImport } from './routes/nempo-feed.index'
+import { Route as NempoFeedSplatRouteImport } from './routes/nempo-feed.$'
 import { Route as WeddingInvitationTemaBiruTamanRouteImport } from './routes/wedding-invitation.tema.biru-taman'
 import { Route as WeddingInvitationTemaBiruTamanTanpaFotoRouteImport } from './routes/wedding-invitation.tema.biru-taman-tanpa-foto'
 import { Route as WeddingInvitationTemaHitamMewahRouteImport } from './routes/wedding-invitation.tema.hitam-mewah'
@@ -105,6 +107,16 @@ const CmsIndexRoute = CmsIndexRouteImport.update({
 const CmsSplatRoute = CmsSplatRouteImport.update({
   id: '/cms/$',
   path: '/cms/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoFeedIndexRoute = NempoFeedIndexRouteImport.update({
+  id: '/nempo-feed/',
+  path: '/nempo-feed/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NempoFeedSplatRoute = NempoFeedSplatRouteImport.update({
+  id: '/nempo-feed/$',
+  path: '/nempo-feed/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeddingInvitationTemaBiruTamanRoute =
@@ -200,7 +212,9 @@ export interface FileRoutesByFullPath {
   '/api/$': typeof ApiSplatRoute
   '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/cms/': typeof CmsIndexRoute
+  '/nempo-feed/': typeof NempoFeedIndexRoute
   '/wedding-invitation/tema/biru-taman': typeof WeddingInvitationTemaBiruTamanRoute
   '/wedding-invitation/tema/biru-taman-tanpa-foto': typeof WeddingInvitationTemaBiruTamanTanpaFotoRoute
   '/wedding-invitation/tema/hitam-mewah': typeof WeddingInvitationTemaHitamMewahRoute
@@ -229,7 +243,9 @@ export interface FileRoutesByTo {
   '/api/$': typeof ApiSplatRoute
   '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/cms': typeof CmsIndexRoute
+  '/nempo-feed': typeof NempoFeedIndexRoute
   '/wedding-invitation/tema/biru-taman': typeof WeddingInvitationTemaBiruTamanRoute
   '/wedding-invitation/tema/biru-taman-tanpa-foto': typeof WeddingInvitationTemaBiruTamanTanpaFotoRoute
   '/wedding-invitation/tema/hitam-mewah': typeof WeddingInvitationTemaHitamMewahRoute
@@ -259,7 +275,9 @@ export interface FileRoutesById {
   '/api/$': typeof ApiSplatRoute
   '/api/backup': typeof ApiBackupRoute
   '/cms/$': typeof CmsSplatRoute
+  '/nempo-feed/$': typeof NempoFeedSplatRoute
   '/cms/': typeof CmsIndexRoute
+  '/nempo-feed/': typeof NempoFeedIndexRoute
   '/wedding-invitation/tema/biru-taman': typeof WeddingInvitationTemaBiruTamanRoute
   '/wedding-invitation/tema/biru-taman-tanpa-foto': typeof WeddingInvitationTemaBiruTamanTanpaFotoRoute
   '/wedding-invitation/tema/hitam-mewah': typeof WeddingInvitationTemaHitamMewahRoute
@@ -290,7 +308,9 @@ export interface FileRouteTypes {
     | '/api/$'
     | '/api/backup'
     | '/cms/$'
+    | '/nempo-feed/$'
     | '/cms/'
+    | '/nempo-feed/'
     | '/wedding-invitation/tema/biru-taman'
     | '/wedding-invitation/tema/biru-taman-tanpa-foto'
     | '/wedding-invitation/tema/hitam-mewah'
@@ -319,7 +339,9 @@ export interface FileRouteTypes {
     | '/api/$'
     | '/api/backup'
     | '/cms/$'
+    | '/nempo-feed/$'
     | '/cms'
+    | '/nempo-feed'
     | '/wedding-invitation/tema/biru-taman'
     | '/wedding-invitation/tema/biru-taman-tanpa-foto'
     | '/wedding-invitation/tema/hitam-mewah'
@@ -348,7 +370,9 @@ export interface FileRouteTypes {
     | '/api/$'
     | '/api/backup'
     | '/cms/$'
+    | '/nempo-feed/$'
     | '/cms/'
+    | '/nempo-feed/'
     | '/wedding-invitation/tema/biru-taman'
     | '/wedding-invitation/tema/biru-taman-tanpa-foto'
     | '/wedding-invitation/tema/hitam-mewah'
@@ -378,7 +402,9 @@ export interface RootRouteChildren {
   ApiSplatRoute: typeof ApiSplatRoute
   ApiBackupRoute: typeof ApiBackupRoute
   CmsSplatRoute: typeof CmsSplatRoute
+  NempoFeedSplatRoute: typeof NempoFeedSplatRoute
   CmsIndexRoute: typeof CmsIndexRoute
+  NempoFeedIndexRoute: typeof NempoFeedIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -479,6 +505,20 @@ declare module '@tanstack/react-router' {
       path: '/cms/$'
       fullPath: '/cms/$'
       preLoaderRoute: typeof CmsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-feed/': {
+      id: '/nempo-feed/'
+      path: '/nempo-feed'
+      fullPath: '/nempo-feed/'
+      preLoaderRoute: typeof NempoFeedIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nempo-feed/$': {
+      id: '/nempo-feed/$'
+      path: '/nempo-feed/$'
+      fullPath: '/nempo-feed/$'
+      preLoaderRoute: typeof NempoFeedSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wedding-invitation/tema/biru-taman': {
@@ -631,7 +671,9 @@ const rootRouteChildren: RootRouteChildren = {
   ApiSplatRoute: ApiSplatRoute,
   ApiBackupRoute: ApiBackupRoute,
   CmsSplatRoute: CmsSplatRoute,
+  NempoFeedSplatRoute: NempoFeedSplatRoute,
   CmsIndexRoute: CmsIndexRoute,
+  NempoFeedIndexRoute: NempoFeedIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
