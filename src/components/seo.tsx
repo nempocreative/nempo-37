@@ -23,7 +23,7 @@ export function SEO({
   type = "website",
   noIndex = false,
 }: SEOProps) {
-  const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Destinasi Wisata, Kuliner & Budaya Jawa Barat`;
+  const fullTitle = title ? `${title} — ${SITE_NAME}` : `${SITE_NAME} — Event, Wedding & Jasa Kreatif Garut`;
   const canonical = `${BASE_URL}${path}`;
   const ogImage = image.startsWith("http") ? image : `${BASE_URL}${image}`;
 

@@ -1252,9 +1252,9 @@ export default function Home() {
     <>
     <Layout>
       <SEO
-          title="Destinasi Wisata, Kuliner & Budaya Jawa Barat"
-          description="Temukan wisata alam Jawa Barat, kuliner khas Sunda, penginapan terbaik, dan event budaya lokal. Platform pariwisata digital untuk menjelajahi Jawa Barat."
-          keywords="wisata jawa barat, kuliner jawa barat, penginapan jawa barat, wisata alam jawa barat, pariwisata jawa barat"
+          title="Event, Wedding & Jasa Kreatif Garut"
+          description="NEMPO Organizer Garut — event organizer, wedding organizer, sosmed management, undangan digital, web development, dan design creative untuk acara dan bisnismu."
+          keywords="event organizer garut, wedding organizer garut, sosmed management, undangan digital, web development, design creative"
         path="/"
       />
       {/* ══ HERO — 3-Card Coverflow ══════════════════════════════════════════ */}
