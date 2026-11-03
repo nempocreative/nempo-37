@@ -492,7 +492,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
             {/* Logo */}
             <Link href="/" aria-label="NEMPO" className="flex items-center gap-2.5 shrink-0 group">
               <img
-                src={`${import.meta.env.BASE_URL}Assets/Logo/nempo-n-white.png`}
+                src={`${import.meta.env.BASE_URL}Assets/Logo/nempo-new.webp`}
                 alt="NEMPO"
                 style={{ height: isAppFrame ? 28 : 36, width: isAppFrame ? 28 : 36, objectFit: "contain", filter: "brightness(0) invert(1)", flexShrink: 0 }}
               />
@@ -790,7 +790,7 @@ export function Layout({ children, hideBottomNav, minimalChrome }: { children: R
           <div className="grid grid-cols-1 gap-8 mb-8 md:mb-10 md:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] md:items-stretch md:gap-12">
             <div className="md:col-span-1">
               <div className="flex items-center gap-2.5 mb-4">
-                <img src="/Assets/Logo/nempo-n-white.png" alt="Nempo Garut" className="h-10 w-10 object-contain" style={{ filter: "brightness(0) invert(1)" }} />
+                <img src="/Assets/Logo/nempo-new.webp" alt="Nempo Garut" className="h-10 w-10 object-contain" style={{ filter: "brightness(0) invert(1)" }} />
                 <div className="flex flex-col leading-none gap-[1px]">
                   <span className="font-black text-[17px]" style={{ fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif", color: "#ffffff", letterSpacing: "-0.03em", lineHeight: 1.2 }}>
                     Nempo Garut
