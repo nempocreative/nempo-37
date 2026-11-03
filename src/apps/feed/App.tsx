@@ -1991,7 +1991,13 @@ function FeedArtwork({
         <FeedMotif />
       )}
       {slide === 1 && <CompactFooterArt />}
-      {isMusiComedySlide ? <SlideThirtyOneBackground showTalent={selectedSlide !== 32} /> : slide === 30 && <SlideThirtySumpahPemuda />}
+      {isMusiComedySlide ? (
+        <SlideThirtyOneBackground
+          mode={selectedSlide === 32 ? "cafe" : selectedSlide === 33 ? "plain" : "talent"}
+        />
+      ) : (
+        slide === 30 && <SlideThirtySumpahPemuda />
+      )}
       {selectedSlide === 33 && <SlideThirtyThreeReminder />}
 
       <div

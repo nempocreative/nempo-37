@@ -61,11 +61,11 @@ export function SlideThirtyThreeReminder() {
         ))}
       </div>
 
-      {/* Reminder card: centred on the poster's top band, clear of both logos. */}
-      <div className="musicomedy-s33-ribbon absolute left-[38%] right-[38%] top-[2%]">
+      {/* Reminder card: centred below the MusiComedy Night title. */}
+      <div className="musicomedy-s33-ribbon absolute left-[19%] right-[19%] top-[29%]">
         <p className="musicomedy-s33-ribbon-text">
           <span className="musicomedy-s33-stamp-inner">BESOK!</span><br />
-          Jangan lupa datang<br />besok, kita<br />seru-seruan bareng!
+          Jangan lupa datang besok,<br />kita seru-seruan bareng!
         </p>
       </div>
     </section>

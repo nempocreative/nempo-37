@@ -39,7 +39,11 @@ const cafeViews: CafeView[] = [
 ];
 
 
-export function SlideThirtyOneBackground({ showTalent = true }: { showTalent?: boolean }) {
+export function SlideThirtyOneBackground({
+  mode = "talent",
+}: {
+  mode?: "talent" | "cafe" | "plain";
+}) {
   return (
     <section
       role="group"
@@ -54,7 +58,7 @@ export function SlideThirtyOneBackground({ showTalent = true }: { showTalent?: b
         loading="eager"
         decoding="async"
       />
-      {!showTalent && (
+      {mode === "cafe" && (
         <div className="musicomedy-cafe-scene">
           {cafeViews.map((view, index) => (
             <figure className={`musicomedy-cafe-card musicomedy-cafe-card--${index}`} key={view.label}>
@@ -73,7 +77,7 @@ export function SlideThirtyOneBackground({ showTalent = true }: { showTalent?: b
           ))}
         </div>
       )}
-      {showTalent && <>
+      {mode === "talent" && <>
       {/* Stage spotlight behind the performers */}
       <div
         aria-hidden="true"
