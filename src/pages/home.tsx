@@ -1874,25 +1874,19 @@ export default function Home() {
           <Link
             href="/event/musicomedy-night"
             className="group block w-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm"
-            style={{
-              willChange: "transform",
-              animation: "cafe-zigzag 3.8s ease-in-out infinite",
-              "--cafe-arc-y": "0px",
-              "--cafe-arc-r": "0deg",
-              "--cafe-zigzag-y": "6px",
-              "--cafe-zigzag-x": "3px",
-              "--cafe-zigzag-x-negative": "-3px",
-              "--cafe-zigzag-r": "0.6deg",
-              "--cafe-zigzag-r-negative": "-0.6deg",
-            } as React.CSSProperties}
           >
             <div className="flex flex-col sm:h-[360px] sm:flex-row">
               <div className="relative aspect-[3/4] w-full shrink-0 overflow-hidden sm:h-full sm:w-auto">
                 <img
                   src={musicomedyPoster}
+                  srcSet="/images/events/musicomedy-night-poster-540.webp 540w, /images/events/musicomedy-night-poster-810.webp 810w, /images/events/musicomedy-night-poster-1080.webp 1080w"
+                  sizes="(min-width: 640px) 270px, 100vw"
                   alt="Poster MusiComedy Night"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  loading="lazy"
+                  width={1440}
+                  height={1920}
+                  className="h-full w-full object-contain"
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
               <div className="flex flex-1 flex-col justify-center gap-2 p-5 sm:gap-3 sm:p-8 lg:p-10">
