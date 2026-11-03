@@ -14,7 +14,7 @@
 - [x] Data impor lama tidak dipertahankan: setelah remix, wisata, kuliner, penginapan, perlombaan, dan kamus Sunda diverifikasi kosong; jangan impor ulang.
 
 ## Terbuka
-- [ ] Pindahkan data dan akun admin ke Supabase milik pengguna: menunggu ekspor Cloud dan impor ke tujuan.
+- [ ] Pindahkan data ke Supabase milik pengguna: file salinan `nempo-database-salinan.sql` sudah siap di Files (teruji jalan di database tiruan) — jalankan di SQL Editor tujuan; akun admin dibuat ulang di tujuan lalu baris `user_roles` ditambahkan.
 - [ ] Verifikasi koneksi Vercel ke Supabase pengguna: menunggu pengaturan tujuan di Vercel dan deploy.
 - [ ] Unggah foto dari `/cms` belum aktif.
 - [ ] Kompres foto unggahan baru ke WebP.
