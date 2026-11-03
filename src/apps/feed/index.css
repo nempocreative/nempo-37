@@ -1351,6 +1351,16 @@
   animation: musicomedy-s33-glow 4.6s ease-in-out infinite;
 }
 
+/* Lower-half variant: a gentler wash so the empty stage still feels lit. */
+.musicomedy-s33-glow--low {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 195, 107, 0.3) 0%,
+    rgba(255, 165, 74, 0.15) 45%,
+    transparent 72%
+  );
+}
+
 @keyframes musicomedy-s33-glow {
   0%,
   100% {
