@@ -1525,6 +1525,34 @@
   text-wrap: balance;
 }
 
+.musicomedy-s33-ribbon-text--small {
+  font-size: 2.1cqw;
+}
+
+.musicomedy-s33-free {
+  display: inline-block;
+  margin-bottom: 0.3em;
+  line-height: 1;
+  color: var(--s33-red);
+  font-size: 6cqw;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 0 rgba(255, 248, 233, 0.9);
+  animation: musicomedy-s33-stamp 1.9s ease-in-out infinite;
+}
+
+.musicomedy-s33-wa {
+  display: inline-block;
+  margin: 0.25em 0;
+  padding: 0.18em 0.7em;
+  border: 1.5px solid rgba(206, 54, 59, 0.75);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--s33-red);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .musicomedy-s33-glow,
   .musicomedy-s33-note,
