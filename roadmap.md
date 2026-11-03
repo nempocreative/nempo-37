@@ -7,8 +7,8 @@
 - [x] Event MusiComedy Night dipulihkan (poster, QRIS saweran, peta, reservasi Good Story Cafe).
 - [x] Contoh pengaturan deploy di `.env.example`.
 
+- [x] Akun admin admin@nempogarut.com dibuat; 109 data situs (wisata, kuliner, penginapan, lomba, kamus Sunda) dimasukkan ke database.
+
 ## Terbuka
-- [ ] Buat akun admin pertama untuk `/cms` — menunggu email admin dari pemilik.
-- [ ] Isi konten database (wisata, kuliner, berita, dll.) — menunggu keputusan apakah data lama ditarik.
 - [ ] Unggah foto dari `/cms` belum aktif.
 - [ ] Kompres foto unggahan baru ke WebP.
