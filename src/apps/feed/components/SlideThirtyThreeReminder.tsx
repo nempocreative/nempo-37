@@ -64,13 +64,13 @@ export function SlideThirtyThreeReminder() {
       {/* BESOK! stamp */}
       <div
         aria-hidden="true"
-        className="musicomedy-s33-stamp absolute right-[4%] top-[36%]"
+        className="musicomedy-s33-stamp absolute left-[55%] top-[0.5%]"
       >
         <span className="musicomedy-s33-stamp-inner">BESOK!</span>
       </div>
 
       {/* Reminder ribbon */}
-      <div className="musicomedy-s33-ribbon absolute inset-x-[5%] bottom-[3.5%]">
+      <div className="musicomedy-s33-ribbon absolute left-[30%] right-[20%] top-[5%]">
         <p className="musicomedy-s33-ribbon-text">
           Jangan lupa datang besok — kita seru-seruan bareng!
         </p>
