@@ -62,6 +62,7 @@ import { SlideSangkuriangCover } from './components/SlideSangkuriangCover';
 import { SlideTwentyNineCafeCover } from './components/SlideTwentyNineCafeCover';
 import { SlideThirtySumpahPemuda } from './components/SlideThirtySumpahPemuda';
 import { SlideThirtyOneBackground } from './components/SlideThirtyOneBackground';
+import { SlideThirtyThreeReminder } from './components/SlideThirtyThreeReminder';
 import { renderNempoSlide20Png } from './lib/renderNempoSlide20Png';
 import {
   GgsBeautySlideOne,
